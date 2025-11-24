@@ -8,44 +8,48 @@
 <style>
 body{
   margin:0; padding:0;
-  background:#0d0d16; font-family:'Poppins',sans-serif;
-  color:white; text-align:center; overflow:hidden;
+  background:#fff0f5; /* خلفية بيضاء وردية */
+  font-family:'Poppins',sans-serif;
+  color:#ff004c;
+  text-align:center;
+  overflow:hidden;
 }
+
+/* خلفية مخفية للتأثيرات */
 body::before{
   content:""; position:fixed; inset:0;
-  background:radial-gradient(circle at center,#ff005533,#000);
+  background:radial-gradient(circle at center,#ffe6f2,#fff);
   filter:blur(40px); z-index:-2;
 }
+
+/* صندوق الباسورد */
 #passwordBox{
   position:fixed; top:50%; left:50%;
   transform:translate(-50%,-50%);
-  background:#ffffff15; padding:7vw;
+  background:#ffffffcc; padding:7vw;
   width:75vw; border-radius:6vw;
   box-shadow:0 0 30px #ff2d64aa;
   backdrop-filter:blur(6px); text-align:center; z-index:9999;
   animation:fadeIn .7s ease;
 }
 #passwordBox h2{
-  font-size:7vw; margin-bottom:4vw; color:#ff8aa7;
-  text-shadow:0 0 12px #ff2d64;
+  font-size:7vw; margin-bottom:4vw; color:#ff004c;
+  text-shadow:0 0 12px #ff8aa7;
 }
 #passwordBox input{
   width:80%; padding:3vw; border:none; border-radius:4vw;
   margin-bottom:5vw; font-size:5vw; text-align:center;
-  outline:none; background:#ffffffcc; color:#ff2d64; font-weight:600;
+  outline:none; background:#fff0f5; color:#ff004c; font-weight:600;
 }
 #passwordBox button{
   padding:3vw 7vw; font-size:5.5vw;
-  border:none; border-radius:5vw; background:#ff2d64;
-  color:white; box-shadow:0 0 20px #ff2d64; font-weight:600; transition:.3s;
+  border:none; border-radius:5vw; background:#ff004c;
+  color:white; box-shadow:0 0 20px #ff004c; font-weight:600; transition:.3s;
 }
 #passwordBox button:hover{ transform:scale(1.08); }
+
 #mainContent{ display:none; }
-.couple-bg{
-  position:fixed; bottom:-20%; left:50%; width:100%;
-  opacity:0.15; transform:translateX(-50%);
-  filter:blur(2px); z-index:-1;
-}
+
 h1{ margin-top:20vw; font-size:9vw; text-shadow:0 0 15px #ff2d64; }
 p{ font-size:5vw; opacity:.9; }
 .btn{
@@ -54,7 +58,16 @@ p{ font-size:5vw; opacity:.9; }
   border-radius:5vw; text-decoration:none; box-shadow:0 0 20px #ff004c; transition:.3s;
 }
 .btn:hover{ transform:scale(1.1); }
-@keyframes fadeIn{ 0%{opacity:0; transform:translate(-50%,-60%);} 100%{opacity:1; transform:translate(-50%,-50%);} }
+
+.heart,.bfly,.star{position:fixed;bottom:-40px;}
+.heart{animation:floatUp 6s linear forwards;font-size:25px;color:#ff004c;}
+.bfly{animation:flyUp 7s linear forwards;font-size:30px;}
+.star{position:fixed;top:-10px;font-size:8px;animation:starDown 6s linear forwards;opacity:.7;}
+
+@keyframes fadeIn{0%{opacity:0; transform:translate(-50%,-60%);}100%{opacity:1; transform:translate(-50%,-50%);}}
+@keyframes floatUp{100%{transform:translateY(-100vh);opacity:0;}}
+@keyframes flyUp{100%{transform:translateY(-100vh) rotate(35deg);opacity:0;}}
+@keyframes starDown{100%{transform:translateY(100vh);opacity:0;}}
 </style>
 </head>
 <body>
@@ -66,7 +79,7 @@ p{ font-size:5vw; opacity:.9; }
 </div>
 
 <div id="mainContent">
-<img src="images/love1.jpg" class="couple-bg">
+<img src="images/love1.jpg" style="width:100%;opacity:0.15;position:fixed;bottom:0;left:0;z-index:-1;">
 
 <audio id="song" loop playsinline>
   <source src="click.mp3" type="audio/mpeg">
@@ -81,78 +94,42 @@ p{ font-size:5vw; opacity:.9; }
 </div>
 
 <script>
-// ------------------------- Password -------------------------
 function checkPass(){
-  const correct = "28/1";
-  const input = document.getElementById("passInput").value;
-  if(input === correct){
-    document.getElementById("passwordBox").style.display = "none";
-    document.getElementById("mainContent").style.display = "block";
-
-    // تشغيل الأغنية بعد أول دخول
-    const s = document.getElementById("song");
+  const correct="28/1";
+  const input=document.getElementById("passInput").value;
+  if(input===correct){
+    document.getElementById("passwordBox").style.display="none";
+    document.getElementById("mainContent").style.display="block";
+    const s=document.getElementById("song");
     s.play().catch(()=>{});
   } else {
     alert("😭 Wrong Password, try again ya habibi...");
   }
 }
-// iPhone fix
 document.addEventListener("click", ()=>{
   const s=document.getElementById("song");
   if(s.paused) s.play();
 });
-</script>
 
-</body>
-</html>ementById("passwordBox").style.display = "none";
-    document.getElementById("mainContent").style.display = "block";
+// ---------- Floating effects ----------
+setInterval(()=>{
+  let h=document.createElement("div"); h.className="heart"; h.innerHTML="❤️";
+  h.style.left=Math.random()*innerWidth+"px"; h.style.fontSize=(20+Math.random()*15)+"px";
+  document.body.appendChild(h); setTimeout(()=>h.remove(),6000);
+},350);
 
-    // تشغيل الأغنية
-    let s = document.getElementById("song");
-    s.play().catch(()=>{});
-  } else {
-    alert("😭 Wrong Password, try again ya habibi...");
-  }
-}
+setInterval(()=>{
+  let b=document.createElement("div"); b.className="bfly"; b.innerHTML="🦋";
+  b.style.left=Math.random()*innerWidth+"px";
+  document.body.appendChild(b); setTimeout(()=>b.remove(),7000);
+},1200);
 
-// iPhone auto-play fix
-document.addEventListener("touchstart", ()=>{
-  let s = document.getElementById("song");
-  if(s.paused) s.play();
-});
-</script>
-
-</body>
-</html> s.innerHTML="✦";
+setInterval(()=>{
+  let s=document.createElement("div"); s.className="star"; s.innerHTML="✦";
   s.style.left=Math.random()*innerWidth+"px";
   s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];
   document.body.appendChild(s); setTimeout(()=>s.remove(),6000);
 },150);
-
-// ------------------ Popup ------------------
-window.onload = ()=>{
-  let pop = document.querySelector(".popup");
-  pop.style.display="block";
-  setTimeout(()=>{pop.style.display="none";},3000);
-};
-</script>
-
-</body>
-</html> b.className="butterfly";
-  b.innerHTML="🦋";
-  b.style.left=Math.random()*innerWidth+"px";
-  document.body.appendChild(b);
-  setTimeout(()=>b.remove(),6000);
-},1200);
-
-// بوب أب
-function pop(txt){
-  let p=document.createElement("div");
-  p.className="popup";
-  p.innerText=txt;
-  document.body.appendChild(p);
-  setTimeout(()=>p.remove(),4000);
-}
 </script>
 
 </body>
