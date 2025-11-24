@@ -3,51 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Baby ❤️</title>
+<title>Surprise ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;padding:0;font-family:'Poppins',sans-serif;color:#ff0055;text-align:center;overflow:hidden;}
-#bgVideo{position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-10;opacity:0.55;}
-#lock{position:absolute;top:40vh;width:100%;z-index:5;}
-#main{display:none;position:relative;z-index:3;padding-top:18vh;}
+body{
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+    overflow-y:auto;
+    font-family:'Poppins',sans-serif;
+    color:#ff0055;
+}
 
-input{padding:12px 20px;font-size:22px;border-radius:12px;border:2px solid #ff0055;outline:none;}
-button{padding:12px 20px;font-size:22px;background:#ff0055;border:none;border-radius:12px;color:white;margin-left:10px;cursor:pointer;}
+/* الخلفية الفيديو */
+#bgVideo1{
+    position:fixed;
+    top:0;left:0;
+    width:100vw;
+    height:100vh;
+    object-fit:cover;
+    z-index:-10;
+    opacity:0.6;
+}
 
-.btn{display:block;margin:20px auto;padding:14px 25px;width:65vw;font-size:28px;background:#ff0055;color:white;text-decoration:none;border-radius:40px;box-shadow:0 0 18px #ff0055;}
-.btn:hover{transform:scale(1.06);}
+/* بوكس الباسوورد */
+#passwordBox{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:80vw;
+    background:#ffffffdd;
+    padding:6vw;
+    border-radius:6vw;
+    text-align:center;
+    box-shadow:0 0 30px #ff004c99;
+    backdrop-filter:blur(6px);
+    z-index:9999;
+}
 
+#passwordBox h2{
+    font-size:6.5vw;
+    margin-bottom:4vw;
+    color:#ff004c;
+}
+
+#passwordBox input{
+    width:80%;
+    padding:3vw;
+    border:none;
+    border-radius:4vw;
+    background:#fff0f6;
+    color:#ff0055;
+    font-size:5vw;
+    text-align:center;
+    outline:none;
+}
+
+#passwordBox button{
+    margin-top:4vw;
+    padding:3vw 7vw;
+    font-size:5vw;
+    border:none;
+    border-radius:6vw;
+    background:#ff0055;
+    color:white;
+    box-shadow:0 0 20px #ff0055;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#passwordBox button:hover{ transform:scale(1.08); }
+
+/* المحتوى المخفي */
+#mainContent{
+    display:none;
+    padding:10vw 5vw;
+    margin-top:20vw;
+    text-align:center;
+}
+
+/* تأثير الكتابة */
+.typed{
+    font-size:7vw;
+    font-weight:700;
+    color:#ff0055;
+    text-shadow:0 0 10px #ff7ba5;
+    opacity:0;
+}
+
+/* زرار */
+.btn{
+    display:block;
+    margin:6vw auto;
+    padding:3.5vw 6vw;
+    font-size:5vw;
+    width:60vw;
+    background:#ff0055;
+    color:white;
+    text-decoration:none;
+    border-radius:6vw;
+    box-shadow:0 0 18px #ff0055;
+    transition:0.3s;
+}
+.btn:hover{ transform:scale(1.08); }
+
+/* قلوب و فراشات */
+.float{
+    position:fixed;
+    bottom:-40px;
+    animation:up 6s linear forwards;
+    z-index:5;
+}
+@keyframes up{
+    100% { transform:translateY(-100vh); opacity:0; }
+}
 </style>
 </head>
+
 <body>
 
-<video autoplay muted loop playsinline id="bgVideo">
-  <source src="background1.mp4" type="video/mp4">
+<!-- الفيديو الخلفية -->
+<video autoplay muted loop playsinline id="bgVideo1">
+    <source src="background1.mp4" type="video/mp4">
 </video>
 
-<div id="lock">
-  <input type="password" id="pw" placeholder="Enter Password">
-  <button onclick="check()">Unlock</button>
+<!-- بوكس الباسوورد -->
+<div id="passwordBox">
+    <h2>💖 Enter Love Key 💖</h2>
+    <input type="password" id="pass" placeholder="Enter password…">
+    <button onclick="unlock()">Open ❤️</button>
 </div>
 
-<div id="main">
-<h1 style="font-size:9vw;text-shadow:0 0 12px #ff7ba5;">Welcome Baby ❤️</h1>
+<!-- المحتوى بعد الباسوورد -->
+<div id="mainContent">
+    <audio id="song" loop>
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
 
-<a class="btn" href="whyiloveyou.html">Why I Love You 💌</a>
-<a class="btn" href="gallery.html">Gallery 📸</a>
-<a class="btn" href="message.html">Message 💕</a>
-<a class="btn" href="dayscounter.html">Days Counter ⏳</a>
+    <h1 class="typed" id="t1">Surprise ❤️</h1>
+    <h2 class="typed" id="t2">B7bkk ya Dimoo 😍</h2>
 
+    <a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
+    <a href="gallery.html" class="btn">Pics 🎀</a>
+    <a href="message.html" class="btn">Message 💕</a>
 </div>
 
 <script>
-function check(){
-  if(document.getElementById("pw").value=="1111"){
-    document.getElementById("lock").style.display="none";
-    document.getElementById("main").style.display="block";
-  } else {
-    alert("Wrong password 😭");
-  }
+function unlock(){
+    if(document.getElementById("pass").value === "28/1"){
+        document.getElementById("passwordBox").style.display="none";
+        document.getElementById("mainContent").style.display="block";
+        startTyping();
+        document.getElementById("song").play().catch(()=>{});
+    } else {
+        alert("❌ Wrong Password");
+    }
+}
+
+document.addEventListener("click", ()=>{
+    const s=document.getElementById("song");
+    if(s.paused){ s.play(); }
+});
+
+/* قلوب و فراشات */
+setInterval(()=>{
+    let e=document.createElement("div");
+    e.className="float";
+    e.innerHTML = Math.random()>.5 ? "❤️" : "🦋";
+    e.style.left = (Math.random()*90)+"vw";
+    e.style.fontSize = (20 + Math.random()*20)+"px";
+    document.body.appendChild(e);
+    setTimeout(()=>{e.remove();},6000);
+},500);
+
+/* typing effect */
+function type(id){
+    let el=document.getElementById(id);
+    let txt=el.innerHTML;
+    el.innerHTML="";
+    el.style.opacity=1;
+    let i=0;
+    function t(){
+        if(i<txt.length){
+            el.innerHTML+=txt.charAt(i);
+            i++;
+            setTimeout(t,120);
+        }
+    }
+    t();
+}
+
+function startTyping(){
+    setTimeout(()=>type("t1"),500);
+    setTimeout(()=>type("t2"),1600);
 }
 </script>
 
