@@ -3,57 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery 💞</title>
+<title>Our Pics 🎀</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-body{margin:0;padding:4vw;background:#fff;font-family:'Poppins',sans-serif;text-align:center;color:#ff004c;overflow:hidden;position:relative;}
-.spiderweb{position:fixed;top:-5vw;left:50%;transform:translateX(-50%);width:160vw;height:160vw;background:url('images/spiderweb.png') no-repeat center top;background-size:cover;opacity:1;z-index:-3;}
-body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at top,#ffe6f2,#fff);filter:blur(35px);z-index:-2;}
-h1{font-size:7vw;margin-top:12vw;text-shadow:0 0 12px #ff2d64;}
-.gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:3vw;margin-top:4vw;}
-.gallery-item{position:relative;}
-.gallery img{width:40vw;border-radius:4vw;box-shadow:0 0 18px #ff2d64aa;transition:.3s;}
-.gallery img:hover{transform:scale(1.05);}
-.ribbon{position:absolute;top:10%;left:10%;font-size:6vw;pointer-events:none;}
-.heart,.bfly,.star{position:fixed;bottom:-40px;}
-.heart{animation:floatUp 6s linear forwards;font-size:25px;color:#ff004c;}
-.bfly{animation:flyUp 7s linear forwards;font-size:35px;}
-.star{position:fixed;top:-10px;font-size:10px;animation:starDown 6s linear forwards;opacity:.7;}
-@keyframes floatUp{100%{transform:translateY(-100vh);opacity:0;}}
-@keyframes flyUp{100%{transform:translateY(-100vh) rotate(35deg);opacity:0;}}
-@keyframes starDown{100%{transform:translateY(100vh);opacity:0;}}
-.btn{margin-top:5vw;font-size:4.5vw;padding:3vw 6vw;background:#ff004c;display:inline-block;color:white;border-radius:5vw;text-decoration:none;box-shadow:0 0 18px #ff004c;transition:.3s;}
-.btn:hover{ transform:scale(1.08);}
+body{margin:0;padding:0;overflow-x:hidden;overflow-y:auto;font-family:'Poppins',sans-serif;color:#ff0055;position:relative;}
+#bgVideo3{position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-10;opacity:0.6;}
+#mainContent{padding:10vw 5vw;text-align:center;}
+.typed{font-size:6.5vw;font-weight:700;color:#ff0055;text-shadow:0 0 10px #ff7ba5;opacity:0;}
+.btn{display:block;margin:6vw auto;padding:3.5vw 6vw;font-size:5vw;width:60vw;background:#ff0055;color:white;text-decoration:none;border-radius:6vw;box-shadow:0 0 18px #ff0055;transition:0.3s;}
+.btn:hover{transform:scale(1.08);}
+.float{position:fixed;bottom:-40px;animation:up 6s linear forwards;z-index:5;}
+@keyframes up{100%{transform:translateY(-100vh);opacity:0;}}
 </style>
 </head>
 <body>
 
-<div class="spiderweb"></div>
+<video autoplay muted loop playsinline id="bgVideo3">
+  <source src="background3.mp4" type="video/mp4">
+</video>
 
-<audio id="song" loop playsinline>
+<div id="mainContent">
+<audio id="song" loop>
   <source src="click.mp3" type="audio/mpeg">
 </audio>
 
-<h1 class="typed-text" data-text="kotyy khalss 💞"></h1>
+<h1 class="typed" id="t1">kotyy khaless 📸</h1>
+<p class="typed" id="t2">Every photo tells a story 💖</p>
 
-<div class="gallery">
-  <div class="gallery-item"><img src="love1.jpg" alt="Pic1"><div class="ribbon">🎀</div></div>
-  <div class="gallery-item"><img src="love2.jpg" alt="Pic2"><div class="ribbon">🎀</div></div>
-  <div class="gallery-item"><img src="love3.jpg" alt="Pic3"><div class="ribbon">🎀</div></div>
-  <div class="gallery-item"><img src="love4.jpg" alt="Pic4"><div class="ribbon">🎀</div></div>
-</div>
-
-<a href="index.html" class="btn">Home 🏠</a>
 <a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
 <a href="message.html" class="btn">Message 💕</a>
+<a href="index.html" class="btn">Back Home 🏠</a>
+</div>
 
 <script>
-document.addEventListener("click", ()=>{let s=document.getElementById("song"); if(s.paused)s.play();});
-setInterval(()=>{let h=document.createElement("div");h.className="heart";h.innerHTML="❤️";h.style.left=Math.random()*innerWidth+"px";h.style.fontSize=(20+Math.random()*10)+"px";h.style.opacity=0.8;document.body.appendChild(h);setTimeout(()=>h.remove(),6000);},400);
-setInterval(()=>{let b=document.createElement("div");b.className="bfly";b.innerHTML="🦋";b.style.left=Math.random()*innerWidth+"px";b.style.fontSize=(25+Math.random()*10)+"px";b.style.opacity=0.9;document.body.appendChild(b);setTimeout(()=>b.remove(),6500);},1500);
-setInterval(()=>{let s=document.createElement("div");s.className="star";s.innerHTML="✦";s.style.left=Math.random()*innerWidth+"px";s.style.fontSize=(8+Math.random()*6)+"px";s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];s.style.opacity=0.7;document.body.appendChild(s);setTimeout(()=>s.remove(),6500);},200);
-function typeText(el){const text=el.getAttribute("data-text");let i=0;el.style.opacity=1;function type(){if(i<text.length){el.innerHTML+=text.charAt(i);i++;setTimeout(type,150);}}type();}
-window.addEventListener("load",()=>{document.querySelectorAll('.typed-text').forEach(el=>typeText(el));});
+document.addEventListener("click", ()=>{ const s=document.getElementById("song"); if(s.paused)s.play(); });
+
+setInterval(()=>{
+    let e=document.createElement("div");
+    e.className="float";
+    e.innerHTML = Math.random()>.5 ? "❤️" : "🦋";
+    e.style.left = (Math.random()*90)+"vw";
+    e.style.fontSize = (20+Math.random()*20)+"px";
+    document.body.appendChild(e);
+    setTimeout(()=>{e.remove();},6000);
+},500);
+
+function type(id){
+    let el=document.getElementById(id); let txt=el.innerHTML; el.innerHTML=""; el.style.opacity=1;
+    let i=0; function t(){ if(i<txt.length){el.innerHTML+=txt.charAt(i); i++; setTimeout(t,120);} } t();
+}
+function startTyping(){ setTimeout(()=>type("t1"),500); setTimeout(()=>type("t2"),1200); }
+startTyping();
 </script>
 
 </body>
