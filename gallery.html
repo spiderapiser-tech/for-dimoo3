@@ -14,11 +14,13 @@ body{margin:0;padding:0;overflow-x:hidden;overflow-y:auto;font-family:'Poppins',
 .btn:hover{transform:scale(1.08);}
 .float{position:fixed;bottom:-40px;animation:up 6s linear forwards;z-index:5;}
 @keyframes up{100%{transform:translateY(-100vh);opacity:0;}}
+
 /* grid الصور */
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(40vw,1fr));gap:4vw;margin-top:6vw;}
 .gallery div{position:relative;}
 .gallery img{width:100%;border-radius:3vw;box-shadow:0 0 20px #ff0055;}
-.fyunk{position:absolute;top:6px;right:6px;font-size:6vw;}
+/* الفيونكات فوق الشمال وحجم أكبر */
+.fyunk{position:absolute;top:8px;left:8px;font-size:8vw;pointer-events:none;}
 </style>
 </head>
 <body>
@@ -36,10 +38,10 @@ body{margin:0;padding:0;overflow-x:hidden;overflow-y:auto;font-family:'Poppins',
 <p class="typed" id="t2">Every photo tells a story 💖</p>
 
 <div class="gallery">
-  <div><img src="love1.jpg" alt="🎀"><div class="fyunk"></div></div>
-  <div><img src="love2.jpg" alt="🎀"><div class="fyunk"></div></div>
-  <div><img src="love3.jpg" alt="🎀"><div class="fyunk"></div></div>
-  <div><img src="love4.jpg" alt="🎀"><div class="fyunk"></div></div>
+  <div><img src="love1.jpg" alt="🎀"><div class="fyunk">🎀</div></div>
+  <div><img src="love2.jpg" alt="🎀"><div class="fyunk">🎀</div></div>
+  <div><img src="love3.jpg" alt="🎀"><div class="fyunk">🎀</div></div>
+  <div><img src="love4.jpg" alt="🎀"><div class="fyunk">🎀</div></div>
 </div>
 
 <a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
@@ -69,4 +71,4 @@ startTyping();
 </script>
 
 </body>
-  </html>
+</html>
