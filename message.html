@@ -24,6 +24,10 @@ a.btn:hover{transform:scale(1.1);}
 </head>
 <body>
 
+<audio id="song" loop playsinline>
+  <source src="click.mp3" type="audio/mpeg">
+</audio>
+
 <h1>Message 4 U 💖</h1>
 
 <div class="msg">
@@ -40,29 +44,6 @@ ana ba7ebek benafs el 2alb eli ma2darsh a3rafo le 7ad. ❤️
 <div class="popup"></div>
 
 <script>
-// ------------------ Floating hearts ------------------
-setInterval(()=>{
-  let h=document.createElement("div"); h.className="heart"; h.innerHTML="❤️";
-  h.style.left=Math.random()*innerWidth+"px"; h.style.fontSize=(20+Math.random()*15)+"px";
-  document.body.appendChild(h); setTimeout(()=>h.remove(),6000);
-},350);
-
-// ------------------ Butterflies ------------------
-setInterval(()=>{
-  let b=document.createElement("div"); b.className="bfly"; b.innerHTML="🦋";
-  b.style.left=Math.random()*innerWidth+"px";
-  document.body.appendChild(b); setTimeout(()=>b.remove(),7000);
-},1200);
-
-// ------------------ Stars ------------------
-setInterval(()=>{
-  let s=document.createElement("div"); s.className="star"; s.innerHTML="✦";
-  s.style.left=Math.random()*innerWidth+"px";
-  s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];
-  document.body.appendChild(s); setTimeout(()=>s.remove(),6000);
-},150);
-
-// ------------------ Popup رسائل رومانسية ------------------
 const messages = [
   "Dimoooo 💖",
   "Ba7eb el yom eli 3reftik feh 💌",
@@ -70,21 +51,44 @@ const messages = [
   "Ba7ebek kteer 😍",
   "Enti kol 7aga fe 7ayaty ✨"
 ];
-const popup = document.querySelector(".popup");
 
+setInterval(()=>{
+  let h=document.createElement("div"); h.className="heart"; h.innerHTML="❤️";
+  h.style.left=Math.random()*innerWidth+"px"; h.style.fontSize=(20+Math.random()*15)+"px";
+  document.body.appendChild(h); setTimeout(()=>h.remove(),6000);
+},350);
+
+setInterval(()=>{
+  let b=document.createElement("div"); b.className="bfly"; b.innerHTML="🦋";
+  b.style.left=Math.random()*innerWidth+"px";
+  document.body.appendChild(b); setTimeout(()=>b.remove(),7000);
+},1200);
+
+setInterval(()=>{
+  let s=document.createElement("div"); s.className="star"; s.innerHTML="✦";
+  s.style.left=Math.random()*innerWidth+"px";
+  s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];
+  document.body.appendChild(s); setTimeout(()=>s.remove(),6000);
+},150);
+
+const popup = document.querySelector(".popup");
 function showPopup(){
   const msg = messages[Math.floor(Math.random()*messages.length)];
   popup.textContent = msg;
   popup.style.display = "block";
   setTimeout(()=>{popup.style.display="none";},2500);
 }
-
 setInterval(showPopup,4000);
+
+// تشغيل الأغنية بعد أول click
+document.addEventListener("click", ()=>{
+  let s=document.getElementById("song");
+  if(s.paused) s.play();
+});
 </script>
 
 </body>
-</html>ainContent');
-    main.style.display='block';
+</html>main.style.display='block';
     calculateDays();
     animateMessages();
   }else{

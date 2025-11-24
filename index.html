@@ -7,143 +7,66 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 body{
-  margin:0;
-  padding:0;
-  background:#0d0d16;
-  font-family:'Poppins',sans-serif;
-  color:white;
-  text-align:center;
-  overflow:hidden;
+  margin:0; padding:0;
+  background:#0d0d16; font-family:'Poppins',sans-serif;
+  color:white; text-align:center; overflow:hidden;
 }
-
-/* خلفية خفيفة */
 body::before{
-  content:"";
-  position:fixed;
-  inset:0;
+  content:""; position:fixed; inset:0;
   background:radial-gradient(circle at center,#ff005533,#000);
-  filter:blur(40px);
-  z-index:-2;
+  filter:blur(40px); z-index:-2;
 }
-
-/* الباسورد بوكس */
 #passwordBox{
-  position:fixed;
-  top:50%;
-  left:50%;
+  position:fixed; top:50%; left:50%;
   transform:translate(-50%,-50%);
-  background:#ffffff15;
-  padding:7vw;
-  width:75vw;
-  border-radius:6vw;
+  background:#ffffff15; padding:7vw;
+  width:75vw; border-radius:6vw;
   box-shadow:0 0 30px #ff2d64aa;
-  backdrop-filter:blur(6px);
-  text-align:center;
-  z-index:9999;
+  backdrop-filter:blur(6px); text-align:center; z-index:9999;
   animation:fadeIn .7s ease;
 }
-
 #passwordBox h2{
-  font-size:7vw;
-  margin-bottom:4vw;
-  color:#ff8aa7;
+  font-size:7vw; margin-bottom:4vw; color:#ff8aa7;
   text-shadow:0 0 12px #ff2d64;
 }
-
 #passwordBox input{
-  width:80%;
-  padding:3vw;
-  border:none;
-  border-radius:4vw;
-  margin-bottom:5vw;
-  font-size:5vw;
-  text-align:center;
-  outline:none;
-  background:#ffffffcc;
-  color:#ff2d64;
-  font-weight:600;
+  width:80%; padding:3vw; border:none; border-radius:4vw;
+  margin-bottom:5vw; font-size:5vw; text-align:center;
+  outline:none; background:#ffffffcc; color:#ff2d64; font-weight:600;
 }
-
 #passwordBox button{
-  padding:3vw 7vw;
-  font-size:5.5vw;
-  border:none;
-  border-radius:5vw;
-  background:#ff2d64;
-  color:white;
-  box-shadow:0 0 20px #ff2d64;
-  font-weight:600;
-  transition:.3s;
+  padding:3vw 7vw; font-size:5.5vw;
+  border:none; border-radius:5vw; background:#ff2d64;
+  color:white; box-shadow:0 0 20px #ff2d64; font-weight:600; transition:.3s;
 }
-
-#passwordBox button:hover{
-  transform:scale(1.08);
-}
-
-/* إخفاء المحتوى الأساسي لحد ما يدخل الباسورد */
-#mainContent{
-  display:none;
-}
-
-/* محتوى الصفحة */
+#passwordBox button:hover{ transform:scale(1.08); }
+#mainContent{ display:none; }
 .couple-bg{
-  position:fixed;
-  bottom:-20%;
-  left:50%;
-  width:100%;
-  opacity:0.15;
-  transform:translateX(-50%);
-  filter:blur(2px);
-  z-index:-1;
+  position:fixed; bottom:-20%; left:50%; width:100%;
+  opacity:0.15; transform:translateX(-50%);
+  filter:blur(2px); z-index:-1;
 }
-
-h1{
-  margin-top:20vw;
-  font-size:9vw;
-  text-shadow:0 0 15px #ff2d64;
-}
-
-p{
-  font-size:5vw;
-  opacity:.9;
-}
-
+h1{ margin-top:20vw; font-size:9vw; text-shadow:0 0 15px #ff2d64; }
+p{ font-size:5vw; opacity:.9; }
 .btn{
-  margin-top:8vw;
-  font-size:5.5vw;
-  padding:4vw 8vw;
-  background:#ff004c;
-  display:inline-block;
-  color:white;
-  border-radius:5vw;
-  text-decoration:none;
-  box-shadow:0 0 20px #ff004c;
-  transition:.3s;
+  margin-top:8vw; font-size:5.5vw; padding:4vw 8vw;
+  background:#ff004c; display:inline-block; color:white;
+  border-radius:5vw; text-decoration:none; box-shadow:0 0 20px #ff004c; transition:.3s;
 }
-
-.btn:hover{
-  transform:scale(1.1);
-}
-
-@keyframes fadeIn{
-  0%{opacity:0; transform:translate(-50%,-60%);}
-  100%{opacity:1; transform:translate(-50%,-50%);}
-}
+.btn:hover{ transform:scale(1.1); }
+@keyframes fadeIn{ 0%{opacity:0; transform:translate(-50%,-60%);} 100%{opacity:1; transform:translate(-50%,-50%);} }
 </style>
 </head>
 <body>
 
-<!-- نافذة الباسورد -->
 <div id="passwordBox">
   <h2>💖 Enter Your Love Key 💖</h2>
   <input type="password" id="passInput" placeholder="Enter password...">
   <button onclick="checkPass()">Open ❤️</button>
 </div>
 
-<!-- محتوى الموقع → مخفي لحد ما الباسورد يبقى صح -->
 <div id="mainContent">
-
-<img src="https://cdn.pixabay.com/photo/2017/08/06/18/14/couple-2599264_1280.jpg" class="couple-bg">
+<img src="images/love1.jpg" class="couple-bg">
 
 <audio id="song" loop playsinline>
   <source src="click.mp3" type="audio/mpeg">
@@ -155,17 +78,33 @@ p{
 <a href="whyiloveyou.html" class="btn">Why I Love You 💌</a><br><br>
 <a href="gallery.html" class="btn">Our Pics 📸</a><br><br>
 <a href="message.html" class="btn">Message 💕</a>
-
 </div>
 
 <script>
-// ------------------------- الباسورد -------------------------
+// ------------------------- Password -------------------------
 function checkPass(){
-  let correct = "28/1";
-  let input = document.getElementById("passInput").value;
-
+  const correct = "28/1";
+  const input = document.getElementById("passInput").value;
   if(input === correct){
     document.getElementById("passwordBox").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+
+    // تشغيل الأغنية بعد أول دخول
+    const s = document.getElementById("song");
+    s.play().catch(()=>{});
+  } else {
+    alert("😭 Wrong Password, try again ya habibi...");
+  }
+}
+// iPhone fix
+document.addEventListener("click", ()=>{
+  const s=document.getElementById("song");
+  if(s.paused) s.play();
+});
+</script>
+
+</body>
+</html>ementById("passwordBox").style.display = "none";
     document.getElementById("mainContent").style.display = "block";
 
     // تشغيل الأغنية

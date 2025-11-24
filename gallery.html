@@ -8,7 +8,7 @@
 <style>
 body{margin:0;padding:5vw;background:#0c0c15;font-family:'Poppins',sans-serif;text-align:center;color:white;overflow:hidden;}
 body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at top,#ff004c33,#000);filter:blur(40px);z-index:-1;}
-h1{font-size:8vw;text-shadow:0 0 15px #ff2d64;}
+h1{font-size:8vw;text-shadow:0 0 15px #ff2d64;margin-top:10vw;}
 .gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:4vw;margin-top:5vw;}
 .gallery img{width:40vw;border-radius:4vw;box-shadow:0 0 25px #ff2d64aa;transition:.3s;}
 .gallery img:hover{transform:scale(1.05);}
@@ -16,48 +16,60 @@ h1{font-size:8vw;text-shadow:0 0 15px #ff2d64;}
 .heart{animation:floatUp 6s linear forwards;font-size:25px;color:#ff2d64;}
 .bfly{animation:flyUp 7s linear forwards;font-size:30px;}
 .star{position:fixed;top:-10px;font-size:8px;animation:starDown 6s linear forwards;opacity:.7;}
-@keyframes floatUp{0%{transform:translateY(0);}100%{transform:translateY(-100vh);opacity:0;}}
-@keyframes flyUp{0%{transform:translateY(0);}100%{transform:translateY(-100vh) rotate(45deg);opacity:0;}}
-@keyframes starDown{0%{transform:translateY(0);}100%{transform:translateY(100vh);opacity:0;}}
+@keyframes floatUp{100%{transform:translateY(-100vh);opacity:0;}}
+@keyframes flyUp{100%{transform:translateY(-100vh) rotate(35deg);opacity:0;}}
+@keyframes starDown{100%{transform:translateY(100vh);opacity:0;}}
 a.btn{display:inline-block;margin-top:5vw;padding:3vw 6vw;font-size:5vw;color:white;background:#ff004c;border-radius:5vw;text-decoration:none;box-shadow:0 0 15px #ff004c;transition:.3s;}
 a.btn:hover{transform:scale(1.1);}
-.popup{position:fixed;top:10%;left:50%;transform:translateX(-50%);background:white;color:#ff004c;font-size:5vw;padding:3vw 5vw;border-radius:3vw;box-shadow:0 0 15px #ff004c;display:none;z-index:10;}
 </style>
 </head>
 <body>
 
+<audio id="song" loop playsinline>
+  <source src="click.mp3" type="audio/mpeg">
+</audio>
+
 <h1>Our Cute Moments 💞</h1>
 
 <div class="gallery">
-  <!-- ضع هنا صورك الخاصة أو Pinterest -->
-  <img src="images/Pinterest1.jpg" alt="Pic1">
-  <img src="images/Pinterest2.jpg" alt="Pic2">
-  <img src="images/Pinterest3.jpg" alt="Pic3">
-  <img src="images/Pinterest4.jpg" alt="Pic4">
+  <img src="images/love1.jpg" alt="Pic1">
+  <img src="images/love2.jpg" alt="Pic2">
+  <img src="images/love3.jpg" alt="Pic3">
+  <img src="images/love4.jpg" alt="Pic4">
 </div>
 
 <a href="index.html" class="btn">Home 🏠</a>
 <a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
 <a href="message.html" class="btn">Message 💕</a>
 
-<div class="popup">A new photo added 💖</div>
-
 <script>
-// ------------------ Floating hearts ------------------
 setInterval(()=>{
   let h=document.createElement("div"); h.className="heart"; h.innerHTML="❤️";
   h.style.left=Math.random()*innerWidth+"px"; h.style.fontSize=(20+Math.random()*15)+"px";
   document.body.appendChild(h); setTimeout(()=>h.remove(),6000);
 },350);
 
-// ------------------ Butterflies ------------------
 setInterval(()=>{
   let b=document.createElement("div"); b.className="bfly"; b.innerHTML="🦋";
   b.style.left=Math.random()*innerWidth+"px";
   document.body.appendChild(b); setTimeout(()=>b.remove(),7000);
 },1200);
 
-// ------------------ Stars ------------------
+setInterval(()=>{
+  let s=document.createElement("div"); s.className="star"; s.innerHTML="✦";
+  s.style.left=Math.random()*innerWidth+"px";
+  s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];
+  document.body.appendChild(s); setTimeout(()=>s.remove(),6000);
+},150);
+
+document.addEventListener("click", ()=>{
+  let s=document.getElementById("song");
+  if(s.paused) s.play();
+});
+</script>
+
+</body>
+</html>------ Stars ------------------
 setInterval(()=>{
   let s=document.createElement("div"); s.className="star"; s.innerHTML="✦";
   s.style.left=Math.random()*innerWidth+"px";
