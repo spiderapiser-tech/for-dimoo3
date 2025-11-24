@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صورنا ❤️</title>
+
+<style>
+body{
+  margin:0; padding:0;
+  background:linear-gradient(135deg,#ffe3ec,#ffd0dc);
+  font-family:"Cairo",sans-serif;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+/* شبكة العنكبوت */
+body::before{
+  content:""; position:absolute; inset:0;
+  background-image: radial-gradient(red 1px, transparent 1px);
+  background-size:22px 22px;
+  opacity:.08; z-index:0;
+}
+
+h1{ 
+  margin:5vw 0;
+  font-size:7vw;
+  color:#d6004c;
+  position:relative; z-index:2;
+}
+
+.gallery{
+  display:flex;
+  flex-direction:column;
+  gap:5vw;
+  padding-bottom:20vw;
+  position:relative; z-index:2;
+}
+
+img{
+  width:85%; border-radius:4vw;
+  box-shadow:0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* قلوب */
+.heart{position:fixed; bottom:-40px; animation:heartUp 5s linear forwards;}
+
+/* فراشات */
+.butterfly{position:fixed; bottom:-40px; animation:flyUp 6s linear forwards;}
+
+@keyframes heartUp{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-100vh); opacity:0;}
+}
+@keyframes flyUp{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-100vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<h1>📸 صورنا الحلوة</h1>
+
+<div class="gallery">
+  <!-- حط صورك هنا -->
+  <img src="1.jpg">
+  <img src="2.jpg">
+  <img src="3.jpg">
+</div>
+
+<script>
+// قلوب
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*innerWidth+"px";
+  h.style.fontSize=(20+Math.random()*20)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+},400);
+
+// فراشات
+setInterval(()=>{
+  let b=document.createElement("div");
+  b.className="butterfly";
+  b.innerHTML="🦋";
+  b.style.left=Math.random()*innerWidth+"px";
+  b.style.fontSize=(20+Math.random()*30)+"px";
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(),6000);
+},1200);
+</script>
+
+</body>
+</html> }
+.heart::after { left: 10px; top: 0; }
+@keyframes floatUp { 0% { transform: translateX(0) rotate(45deg); opacity:0.7; } 50% { opacity:1; } 100% { transform: translateY(-100vh) rotate(45deg) translateX(30px); opacity:0; } }
+</style>
+</head>
+<body>
+<audio id="clickSound" src="click.mp3"></audio>
+
+<div id="loginDiv">
+  <h1>🔒 أدخل كلمة المرور</h1>
+  <input type="password" id="password" placeholder="ادخلي الباسوورد">
+  <button onclick="checkPassword()">دخول</button>
+  <p id="errorMsg" style="color:red;font-size:4vw;"></p>
+</div>
+
+<div id="mainContent" style="display:none;opacity:0;">
+  <h1>📸 صورنا الحلوة</h1>
+  <div class="img-box"><img src="images/your-image-1.jpg"></div>
+  <div class="img-box"><img src="images/your-image-2.jpg"></div>
+  <div class="img-box"><img src="images/your-image-3.jpg"></div>
+  <a href="index.html">⬅️ رجوع للرئيسية</a><br><br>
+  <button onclick="toggleDarkMode()">🌙 تبديل الوضع الليلي</button>
+</div>
+
+<script>
+const clickSound=document.getElementById('clickSound');
+function playClick(){clickSound.play();}
+function toggleDarkMode(){playClick();document.body.classList.toggle('dark-mode');}
+function checkPassword(){playClick();const pw=document.getElementById('password').value;if(pw==='28/1'){document.getElementById('loginDiv').style.display='none';document.getElementById('mainContent').style.display='block';}else{document.getElementById('errorMsg').innerText='كلمة المرور خاطئة!';}}
+function animateTransition(e){playClick();e.preventDefault();const link=e.currentTarget.href;document.body.style.opacity=0;setTimeout(()=>{ window.location=link; },500);}
+function createHeart(){const heart=document.createElement('div');heart.classList.add('heart');heart.style.left=Math.random()*window.innerWidth+'px';heart.style.animationDuration=4+Math.random()*3+'s';document.body.appendChild(heart);setTimeout(()=>{heart.remove();},7000);}
+setInterval(createHeart,500);
+</script>
+</body>
+</html>

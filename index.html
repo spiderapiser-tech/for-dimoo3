@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الرئيسية ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  font-family:"Cairo",sans-serif;
+  margin:0; padding:0;
+  text-align:center;
+  background:linear-gradient(135deg,#ffd0dc,#ffe3ec);
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* شبكة العنكبوت */
+body::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image: radial-gradient(red 1px, transparent 1px);
+  background-size:22px 22px;
+  opacity:0.08;
+  z-index:0;
+}
+
+/* عناصر الأساس */
+h1,h2,p,a,button{position:relative; z-index:2;}
+
+h1{
+  color:#d6004c;
+  font-size:8vw;
+  margin-top:12vw;
+  text-shadow:3px 3px 10px white;
+}
+
+/* زر */
+a,button{
+  display:inline-block;
+  font-size:5vw;
+  padding:3vw 6vw;
+  margin:3vw;
+  border:none;
+  background:#ff4d79;
+  color:white;
+  text-decoration:none;
+  border-radius:4vw;
+  box-shadow:0 4px 12px rgba(0,0,0,0.25);
+  transition:.3s;
+}
+a:hover,button:hover{
+  transform:scale(1.1);
+  background:#d6004c;
+}
+
+/* باسوورد */
+#loginDiv{
+  position:fixed; inset:0;
+  background:linear-gradient(135deg,#ffd0dc,#ffe3ec);
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  z-index:9999;
+}
+#loginDiv input{
+  padding:3vw; width:70%;
+  border-radius:3vw;
+  font-size:5vw;
+  border:2px solid #ff4d79;
+  margin-bottom:4vw;
+}
+#loginDiv button{
+  background:#d6004c; padding:3vw 10vw;
+  font-size:5vw; border-radius:3vw; color:white;
+}
+
+/* قلوب */
+.heart{
+  position:fixed; bottom:-40px;
+  animation:heartUp 5s linear forwards;
+  font-size:20px;
+  opacity:.8;
+  filter:drop-shadow(0 0 6px #ff4d79);
+  z-index:1;
+}
+@keyframes heartUp{
+  0%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-50vh) scale(1.4);}
+  100%{transform:translateY(-100vh); opacity:0;}
+}
+
+/* فراشات */
+.butterfly{
+  position:fixed; bottom:-40px;
+  animation:flyUp 6s linear forwards;
+  font-size:25px;
+  opacity:.9;
+}
+@keyframes flyUp{
+  0%{transform:translateY(0) rotate(0);}
+  50%{transform:translateY(-50vh) rotate(10deg);}
+  100%{transform:translateY(-100vh); opacity:0;}
+}
+
+/* بوب أب */
+.popup{
+  position:fixed;
+  background:white;
+  padding:4vw 6vw;
+  bottom:10vw;
+  left:50%;
+  transform:translateX(-50%);
+  border-radius:4vw;
+  font-size:4.5vw;
+  color:#d6004c;
+  box-shadow:0 4px 10px rgba(0,0,0,0.25);
+  animation:pop 4s forwards;
+  z-index:9;
+}
+@keyframes pop{
+  0%{opacity:0; transform:translate(-50%,20px);}
+  10%{opacity:1; transform:translate(-50%,0);}
+  90%{opacity:1;}
+  100%{opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- الأغنية -->
+<audio id="song" autoplay loop playsinline>
+  <source src="amr-diab.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("touchstart",()=>{
+  let s=document.getElementById("song");
+  if(s.paused) s.play();
+});
+</script>
+
+<!-- شاشة الباسوورد -->
+<div id="loginDiv">
+  <h1>🔒 كلمة السر</h1>
+  <input id="pw" type="password" placeholder="ادخلي الباسوورد">
+  <button onclick="checkPW()">دخول</button>
+  <p id="err" style="color:red;font-size:4.5vw;"></p>
+</div>
+
+<div id="main" style="display:none; opacity:0">
+  <h1>❤️ اشتقتلك يا روحي ❤️</h1>
+  <a href="gallery.html">📸 البوم صورنا</a>
+  <a href="message.html">💌 رسالة مني ليكي</a>
+</div>
+
+<script>
+// باسوورد
+function checkPW(){
+  let v=document.getElementById("pw").value;
+  if(v==="28/1"){
+    document.getElementById("loginDiv").style.display="none";
+    let m=document.getElementById("main");
+    m.style.display="block";
+    m.style.opacity=1;
+    pop("منورة يا قلبي ❤️");
+  } else {
+    document.getElementById("err").innerText="غلط يا قمر 😢";
+  }
+}
+
+// قلوب
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*innerWidth+"px";
+  h.style.fontSize=(20+Math.random()*20)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+},350);
+
+// فراشات
+setInterval(()=>{
+  let b=document.createElement("div");
+  b.className="butterfly";
+  b.innerHTML="🦋";
+  b.style.left=Math.random()*innerWidth+"px";
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(),6000);
+},1200);
+
+// بوب أب
+function pop(txt){
+  let p=document.createElement("div");
+  p.className="popup";
+  p.innerText=txt;
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),4000);
+}
+</script>
+
+</body>
+</html>
