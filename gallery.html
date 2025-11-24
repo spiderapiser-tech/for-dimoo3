@@ -9,7 +9,8 @@
 body{margin:0;padding:5vw;background:#0c0c15;font-family:'Poppins',sans-serif;text-align:center;color:white;overflow:hidden;}
 body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at top,#ff004c33,#000);filter:blur(40px);z-index:-1;}
 h1{font-size:8vw;text-shadow:0 0 15px #ff2d64;}
-.gallery img{width:90%;border-radius:4vw;margin:4vw 0;box-shadow:0 0 25px #ff2d64aa;transition:.3s;}
+.gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:4vw;margin-top:5vw;}
+.gallery img{width:40vw;border-radius:4vw;box-shadow:0 0 25px #ff2d64aa;transition:.3s;}
 .gallery img:hover{transform:scale(1.05);}
 .heart,.bfly,.star{position:fixed;bottom:-40px;}
 .heart{animation:floatUp 6s linear forwards;font-size:25px;color:#ff2d64;}
@@ -20,6 +21,7 @@ h1{font-size:8vw;text-shadow:0 0 15px #ff2d64;}
 @keyframes starDown{0%{transform:translateY(0);}100%{transform:translateY(100vh);opacity:0;}}
 a.btn{display:inline-block;margin-top:5vw;padding:3vw 6vw;font-size:5vw;color:white;background:#ff004c;border-radius:5vw;text-decoration:none;box-shadow:0 0 15px #ff004c;transition:.3s;}
 a.btn:hover{transform:scale(1.1);}
+.popup{position:fixed;top:10%;left:50%;transform:translateX(-50%);background:white;color:#ff004c;font-size:5vw;padding:3vw 5vw;border-radius:3vw;box-shadow:0 0 15px #ff004c;display:none;z-index:10;}
 </style>
 </head>
 <body>
@@ -27,33 +29,52 @@ a.btn:hover{transform:scale(1.1);}
 <h1>Our Cute Moments 💞</h1>
 
 <div class="gallery">
-<img src="https://cdn.pixabay.com/photo/2017/08/06/18/14/couple-2599264_1280.jpg">
-<img src="https://cdn.pixabay.com/photo/2014/12/16/22/25/couple-569238_1280.jpg">
-<img src="https://cdn.pixabay.com/photo/2017/01/30/21/29/couple-2029363_1280.jpg">
-<img src="https://cdn.pixabay.com/photo/2016/07/24/18/38/couple-1536182_1280.jpg">
+  <!-- ضع هنا صورك الخاصة أو Pinterest -->
+  <img src="images/Pinterest1.jpg" alt="Pic1">
+  <img src="images/Pinterest2.jpg" alt="Pic2">
+  <img src="images/Pinterest3.jpg" alt="Pic3">
+  <img src="images/Pinterest4.jpg" alt="Pic4">
 </div>
 
 <a href="index.html" class="btn">Home 🏠</a>
 <a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
 <a href="message.html" class="btn">Message 💕</a>
 
+<div class="popup">A new photo added 💖</div>
+
 <script>
-setInterval(()=>{let h=document.createElement("div");h.className="heart";h.innerHTML="❤️";h.style.left=Math.random()*innerWidth+"px";document.body.appendChild(h);setTimeout(()=>h.remove(),6000);},350);
-setInterval(()=>{let b=document.createElement("div");b.className="bfly";b.innerHTML="🦋";b.style.left=Math.random()*innerWidth+"px";document.body.appendChild(b);setTimeout(()=>b.remove(),7000);},1200);
-setInterval(()=>{let s=document.createElement("div");s.className="star";s.innerHTML="✦";s.style.left=Math.random()*innerWidth+"px";s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];document.body.appendChild(s);setTimeout(()=>s.remove(),6000);},150);
+// ------------------ Floating hearts ------------------
+setInterval(()=>{
+  let h=document.createElement("div"); h.className="heart"; h.innerHTML="❤️";
+  h.style.left=Math.random()*innerWidth+"px"; h.style.fontSize=(20+Math.random()*15)+"px";
+  document.body.appendChild(h); setTimeout(()=>h.remove(),6000);
+},350);
+
+// ------------------ Butterflies ------------------
+setInterval(()=>{
+  let b=document.createElement("div"); b.className="bfly"; b.innerHTML="🦋";
+  b.style.left=Math.random()*innerWidth+"px";
+  document.body.appendChild(b); setTimeout(()=>b.remove(),7000);
+},1200);
+
+// ------------------ Stars ------------------
+setInterval(()=>{
+  let s=document.createElement("div"); s.className="star"; s.innerHTML="✦";
+  s.style.left=Math.random()*innerWidth+"px";
+  s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];
+  document.body.appendChild(s); setTimeout(()=>s.remove(),6000);
+},150);
+
+// ------------------ Popup عند الدخول ------------------
+window.onload = ()=>{
+  let pop = document.querySelector(".popup");
+  pop.style.display="block";
+  setTimeout(()=>{pop.style.display="none";},3000);
+};
 </script>
 
 </body>
-</html><div class="img-box"><img src="images/your-image-3.jpg"></div>
-  <a href="index.html">⬅️ رجوع للرئيسية</a><br><br>
-  <button onclick="toggleDarkMode()">🌙 تبديل الوضع الليلي</button>
-</div>
-
-<script>
-const clickSound=document.getElementById('clickSound');
-function playClick(){clickSound.play();}
-function toggleDarkMode(){playClick();document.body.classList.toggle('dark-mode');}
-function checkPassword(){playClick();const pw=document.getElementById('password').value;if(pw==='28/1'){document.getElementById('loginDiv').style.display='none';document.getElementById('mainContent').style.display='block';}else{document.getElementById('errorMsg').innerText='كلمة المرور خاطئة!';}}
+</html>�رور خاطئة!';}}
 function animateTransition(e){playClick();e.preventDefault();const link=e.currentTarget.href;document.body.style.opacity=0;setTimeout(()=>{ window.location=link; },500);}
 function createHeart(){const heart=document.createElement('div');heart.classList.add('heart');heart.style.left=Math.random()*window.innerWidth+'px';heart.style.animationDuration=4+Math.random()*3+'s';document.body.appendChild(heart);setTimeout(()=>{heart.remove();},7000);}
 setInterval(createHeart,500);
