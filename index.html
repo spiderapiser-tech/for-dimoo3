@@ -5,128 +5,200 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Surprise ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-body{margin:0;padding:0;font-family:'Poppins',sans-serif;color:#ff004c;overflow-x:hidden;overflow-y:auto;position:relative;}
-#bgVideo1{position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-5;opacity:0.6;}
-#passwordBox{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#ffffffcc;padding:5vw;width:80vw;border-radius:6vw;box-shadow:0 0 25px #ff2d64aa;backdrop-filter:blur(6px);text-align:center;z-index:9999;}
-#passwordBox h2{font-size:6vw;margin-bottom:3vw;color:#ff004c;text-shadow:0 0 10px #ff8aa7;}
-#passwordBox input{width:80%;padding:3vw;border:none;border-radius:4vw;margin-bottom:4vw;font-size:4.5vw;text-align:center;outline:none;background:#fff0f5;color:#ff004c;font-weight:600;}
-#passwordBox button{padding:3vw 6vw;font-size:5vw;border:none;border-radius:5vw;background:#ff004c;color:white;box-shadow:0 0 18px #ff004c;font-weight:600;transition:.3s;}
-#passwordBox button:hover{transform:scale(1.08);}
-#mainContent{display:none;position:relative;z-index:0;padding-bottom:10vw;}
-h1{margin-top:15vw;font-size:7vw;text-shadow:0 0 12px #ff2d64;}
-p{font-size:4.5vw;opacity:.9;}
-.btn{margin-top:6vw;font-size:4.5vw;padding:3vw 6vw;background:#ff004c;display:inline-block;color:white;border-radius:5vw;text-decoration:none;box-shadow:0 0 18px #ff004c;transition:.3s;}
-.btn:hover{transform:scale(1.1);}
-.heart,.bfly,.star{position:fixed;bottom:-40px;}
-.heart{animation:floatUp 6s linear forwards;font-size:25px;color:#ff004c;}
-.bfly{animation:flyUp 7s linear forwards;font-size:35px;}
-.star{position:fixed;top:-10px;font-size:10px;animation:starDown 6s linear forwards;opacity:.7;}
-@keyframes floatUp{100%{transform:translateY(-100vh);opacity:0;}}
-@keyframes flyUp{100%{transform:translateY(-100vh) rotate(35deg);opacity:0;}}
-@keyframes starDown{100%{transform:translateY(100vh);opacity:0;}}
-.typed-text{font-size:5vw;opacity:0;display:inline-block;}
+body{
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+    overflow-y:auto;
+    font-family:'Poppins',sans-serif;
+    color:#ff0055;
+}
+
+/* الخلفية الفيديو */
+#bgVideo1{
+    position:fixed;
+    top:0;left:0;
+    width:100vw;
+    height:100vh;
+    object-fit:cover;
+    z-index:-10;
+    opacity:0.6;
+}
+
+/* بوكس الباسوورد */
+#passwordBox{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:80vw;
+    background:#ffffffdd;
+    padding:6vw;
+    border-radius:6vw;
+    text-align:center;
+    box-shadow:0 0 30px #ff004c99;
+    backdrop-filter:blur(6px);
+    z-index:9999;
+}
+
+#passwordBox h2{
+    font-size:6.5vw;
+    margin-bottom:4vw;
+    color:#ff004c;
+}
+
+#passwordBox input{
+    width:80%;
+    padding:3vw;
+    border:none;
+    border-radius:4vw;
+    background:#fff0f6;
+    color:#ff0055;
+    font-size:5vw;
+    text-align:center;
+    outline:none;
+}
+
+#passwordBox button{
+    margin-top:4vw;
+    padding:3vw 7vw;
+    font-size:5vw;
+    border:none;
+    border-radius:6vw;
+    background:#ff0055;
+    color:white;
+    box-shadow:0 0 20px #ff0055;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#passwordBox button:hover{ transform:scale(1.08); }
+
+/* المحتوى المخفي */
+#mainContent{
+    display:none;
+    padding:10vw 5vw;
+    margin-top:20vw;
+    text-align:center;
+}
+
+/* تأثير الكتابة */
+.typed{
+    font-size:7vw;
+    font-weight:700;
+    color:#ff0055;
+    text-shadow:0 0 10px #ff7ba5;
+    opacity:0;
+}
+
+/* زرار */
+.btn{
+    display:block;
+    margin:6vw auto;
+    padding:3.5vw 6vw;
+    font-size:5vw;
+    width:60vw;
+    background:#ff0055;
+    color:white;
+    text-decoration:none;
+    border-radius:6vw;
+    box-shadow:0 0 18px #ff0055;
+    transition:0.3s;
+}
+.btn:hover{ transform:scale(1.08); }
+
+/* قلوب و فراشات */
+.float{
+    position:fixed;
+    bottom:-40px;
+    animation:up 6s linear forwards;
+    z-index:5;
+}
+@keyframes up{
+    100% { transform:translateY(-100vh); opacity:0; }
+}
 </style>
 </head>
+
 <body>
 
-<video autoplay muted loop id="bgVideo1" playsinline>
-  <source src="background1.mp4" type="video/mp4">
+<!-- الفيديو الخلفية -->
+<video autoplay muted loop playsinline id="bgVideo1">
+    <source src="background1.mp4" type="video/mp4">
 </video>
 
+<!-- بوكس الباسوورد -->
 <div id="passwordBox">
-  <h2>💖 Enter Your Love Key 💖</h2>
-  <input type="password" id="passInput" placeholder="Enter password...">
-  <button onclick="checkPass()">Open ❤️</button>
+    <h2>💖 Enter Love Key 💖</h2>
+    <input type="password" id="pass" placeholder="Enter password…">
+    <button onclick="unlock()">Open ❤️</button>
 </div>
 
+<!-- المحتوى بعد الباسوورد -->
 <div id="mainContent">
-<audio id="song" loop playsinline>
-  <source src="click.mp3" type="audio/mpeg">
-</audio>
-<h1 class="typed-text" data-text="Surprise 😍"></h1>
-<p class="typed-text" data-text="B7bkk ya Dimoo 💖"></p>
-<a href="whyiloveyou.html" class="btn">Why I Love You 💌</a><br><br>
-<a href="gallery.html" class="btn">Our Pics 📸</a><br><br>
-<a href="message.html" class="btn">Message 💕</a>
+    <audio id="song" loop>
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
+
+    <h1 class="typed" id="t1">Surprise ❤️</h1>
+    <h2 class="typed" id="t2">B7bkk ya Dimoo 😍</h2>
+
+    <a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
+    <a href="gallery.html" class="btn">Our Pics 🎀</a>
+    <a href="message.html" class="btn">Message 💕</a>
 </div>
 
 <script>
-function checkPass(){
-  const correct="28/1";
-  const input=document.getElementById("passInput").value;
-  if(input===correct){
-    document.getElementById("passwordBox").style.display="none";
-    document.getElementById("mainContent").style.display="block";
-    document.getElementById("song").play().catch(()=>{});
-    startTyping();
-  } else { alert("😭 Wrong Password, try again..."); }
+function unlock(){
+    if(document.getElementById("pass").value === "28/1"){
+        document.getElementById("passwordBox").style.display="none";
+        document.getElementById("mainContent").style.display="block";
+        startTyping();
+        document.getElementById("song").play().catch(()=>{});
+    } else {
+        alert("❌ Wrong Password");
+    }
 }
 
-document.addEventListener("click", ()=>{ const s=document.getElementById("song"); if(s.paused) s.play(); });
+document.addEventListener("click", ()=>{
+    const s=document.getElementById("song");
+    if(s.paused){ s.play(); }
+});
 
-setInterval(()=>{let h=document.createElement("div");h.className="heart";h.innerHTML="❤️";h.style.left=Math.random()*innerWidth+"px";h.style.fontSize=(20+Math.random()*10)+"px";h.style.opacity=0.8;document.body.appendChild(h);setTimeout(()=>h.remove(),6000);},400);
-setInterval(()=>{let b=document.createElement("div");b.className="bfly";b.innerHTML="🦋";b.style.left=Math.random()*innerWidth+"px";b.style.fontSize=(25+Math.random()*10)+"px";b.style.opacity=0.9;document.body.appendChild(b);setTimeout(()=>b.remove(),6500);},1500);
-setInterval(()=>{let s=document.createElement("div");s.className="star";s.innerHTML="✦";s.style.left=Math.random()*innerWidth+"px";s.style.fontSize=(8+Math.random()*6)+"px";s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];s.style.opacity=0.7;document.body.appendChild(s);setTimeout(()=>s.remove(),6500);},200);
+/* قلوب و فراشات */
+setInterval(()=>{
+    let e=document.createElement("div");
+    e.className="float";
+    e.innerHTML = Math.random()>.5 ? "❤️" : "🦋";
+    e.style.left = (Math.random()*90)+"vw";
+    e.style.fontSize = (20 + Math.random()*20)+"px";
+    document.body.appendChild(e);
+    setTimeout(()=>{e.remove();},6000);
+},500);
 
-function typeText(el){const text=el.getAttribute("data-text");let i=0;el.style.opacity=1;function type(){if(i<text.length){el.innerHTML+=text.charAt(i);i++;setTimeout(type,150);}}type();}
-function startTyping(){document.querySelectorAll('.typed-text').forEach(el=>typeText(el));}
-</script>
-
-</body>
-</html><a href="gallery.html" class="btn">Our Pics 📸</a><br><br>
-<a href="message.html" class="btn">Message 💕</a>
-</div>
-
-<script>
-function checkPass(){
-  const correct="28/1";
-  const input=document.getElementById("passInput").value;
-  if(input===correct){
-    document.getElementById("passwordBox").style.display="none";
-    document.getElementById("mainContent").style.display="block";
-    document.getElementById("song").play().catch(()=>{});
-    startTyping();
-  } else { alert("😭 Wrong Password, try again..."); }
+/* typing effect */
+function type(id){
+    let el=document.getElementById(id);
+    let txt=el.innerHTML;
+    el.innerHTML="";
+    el.style.opacity=1;
+    let i=0;
+    function t(){
+        if(i<txt.length){
+            el.innerHTML+=txt.charAt(i);
+            i++;
+            setTimeout(t,120);
+        }
+    }
+    t();
 }
 
-document.addEventListener("click", ()=>{ const s=document.getElementById("song"); if(s.paused) s.play(); });
-
-setInterval(()=>{let h=document.createElement("div");h.className="heart";h.innerHTML="❤️";h.style.left=Math.random()*innerWidth+"px";h.style.fontSize=(20+Math.random()*10)+"px";h.style.opacity=0.8;document.body.appendChild(h);setTimeout(()=>h.remove(),6000);},400);
-setInterval(()=>{let b=document.createElement("div");b.className="bfly";b.innerHTML="🦋";b.style.left=Math.random()*innerWidth+"px";b.style.fontSize=(25+Math.random()*10)+"px";b.style.opacity=0.9;document.body.appendChild(b);setTimeout(()=>b.remove(),6500);},1500);
-setInterval(()=>{let s=document.createElement("div");s.className="star";s.innerHTML="✦";s.style.left=Math.random()*innerWidth+"px";s.style.fontSize=(8+Math.random()*6)+"px";s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];s.style.opacity=0.7;document.body.appendChild(s);setTimeout(()=>s.remove(),6500);},200);
-
-function typeText(el){const text=el.getAttribute("data-text");let i=0;el.style.opacity=1;function type(){if(i<text.length){el.innerHTML+=text.charAt(i);i++;setTimeout(type,150);}}type();}
-function startTyping(){document.querySelectorAll('.typed-text').forEach(el=>typeText(el));}
-</script>
-
-</body>
-</html><p class="typed-text" data-text="B7bkk ya Dimoo 💖"></p>
-<a href="whyiloveyou.html" class="btn">Why I Love You 💌</a><br><br>
-<a href="gallery.html" class="btn">Our Pics 📸</a><br><br>
-<a href="message.html" class="btn">Message 💕</a>
-</div>
-
-<script>
-function checkPass(){
-  const correct="28/1";
-  const input=document.getElementById("passInput").value;
-  if(input===correct){
-    document.getElementById("passwordBox").style.display="none";
-    document.getElementById("mainContent").style.display="block";
-    const s=document.getElementById("song"); s.play().catch(()=>{});
-    startTyping();
-  } else { alert("😭 Wrong Password, try again..."); }
+function startTyping(){
+    setTimeout(()=>type("t1"),500);
+    setTimeout(()=>type("t2"),1600);
 }
-
-document.addEventListener("click", ()=>{ const s=document.getElementById("song"); if(s.paused) s.play(); });
-
-setInterval(()=>{let h=document.createElement("div");h.className="heart";h.innerHTML="❤️";h.style.left=Math.random()*innerWidth+"px";h.style.fontSize=(20+Math.random()*10)+"px";h.style.opacity=0.8;document.body.appendChild(h);setTimeout(()=>h.remove(),6000);},400);
-setInterval(()=>{let b=document.createElement("div");b.className="bfly";b.innerHTML="🦋";b.style.left=Math.random()*innerWidth+"px";b.style.fontSize=(25+Math.random()*10)+"px";b.style.opacity=0.9;document.body.appendChild(b);setTimeout(()=>b.remove(),6500);},1500);
-setInterval(()=>{let s=document.createElement("div");s.className="star";s.innerHTML="✦";s.style.left=Math.random()*innerWidth+"px";s.style.fontSize=(8+Math.random()*6)+"px";s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];s.style.opacity=0.7;document.body.appendChild(s);setTimeout(()=>s.remove(),6500);},200);
-
-function typeText(el){const text=el.getAttribute("data-text");let i=0;el.style.opacity=1;function type(){if(i<text.length){el.innerHTML+=text.charAt(i);i++;setTimeout(type,150);}}type();}
-function startTyping(){document.querySelectorAll('.typed-text').forEach(el=>typeText(el));}
 </script>
 
 </body>
