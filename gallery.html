@@ -3,24 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elkoty bt3tyy 🎀</title>
+<title>Gallery with 🎀</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-body{margin:0;padding:0;overflow-x:hidden;overflow-y:auto;font-family:'Poppins',sans-serif;color:#ff0055;position:relative;}
-#bgVideo3{position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-10;opacity:0.6;}
-#mainContent{padding:10vw 5vw;text-align:center;position:relative;z-index:1;}
-.typed{font-size:6.5vw;font-weight:700;color:#ff0055;text-shadow:0 0 10px #ff7ba5;opacity:0;margin-bottom:6vw;}
-.btn{display:block;margin:6vw auto;padding:3.5vw 6vw;font-size:5vw;width:60vw;background:#ff0055;color:white;text-decoration:none;border-radius:6vw;box-shadow:0 0 18px #ff0055;transition:0.3s;}
+body {
+  margin:0;
+  padding:0;
+  font-family:'Poppins',sans-serif;
+  color:#ff0055;
+  position:relative;
+  overflow-x:hidden;
+}
+#bgVideo{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  object-fit:cover;
+  z-index:-10;
+  opacity:0.6;
+}
+#mainContent{
+  padding:10vw 5vw;
+  text-align:center;
+  position:relative;
+  z-index:1;
+}
+.typed{
+  font-size:6.5vw;
+  font-weight:700;
+  color:#ff0055;
+  text-shadow:0 0 10px #ff7ba5;
+  opacity:0;
+  margin-bottom:6vw;
+}
+.btn{
+  display:block;
+  margin:6vw auto;
+  padding:3.5vw 6vw;
+  font-size:5vw;
+  width:60vw;
+  background:#ff0055;
+  color:white;
+  text-decoration:none;
+  border-radius:6vw;
+  box-shadow:0 0 18px #ff0055;
+  transition:0.3s;
+}
 .btn:hover{transform:scale(1.08);}
-.float{position:fixed;bottom:-40px;animation:up 6s linear forwards;z-index:5;}
+.float{
+  position:fixed;
+  bottom:-40px;
+  animation:up 6s linear forwards;
+  z-index:5;
+}
 @keyframes up{100%{transform:translateY(-100vh);opacity:0;}}
 
 /* gallery flex */
 .gallery{
   display:flex;
   flex-wrap:wrap;
-  gap:4vw;
   justify-content:center;
+  gap:4vw;
   margin-top:6vw;
 }
 .gallery div{
@@ -34,7 +79,6 @@ body{margin:0;padding:0;overflow-x:hidden;overflow-y:auto;font-family:'Poppins',
   border-radius:3vw;
   box-shadow:0 0 20px #ff0055;
 }
-
 /* الفيونك فوق الشمال داخل الصورة */
 .fyunk{
   position:absolute;
@@ -48,7 +92,7 @@ body{margin:0;padding:0;overflow-x:hidden;overflow-y:auto;font-family:'Poppins',
 </head>
 <body>
 
-<video autoplay muted loop playsinline id="bgVideo3">
+<video autoplay muted loop playsinline id="bgVideo">
   <source src="background3.mp4" type="video/mp4">
 </video>
 
@@ -69,6 +113,46 @@ body{margin:0;padding:0;overflow-x:hidden;overflow-y:auto;font-family:'Poppins',
 
 <a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
 <a href="message.html" class="btn">Message 💕</a>
+<a href="index.html" class="btn">Back Home 🏠</a>
+</div>
+
+<script>
+document.addEventListener("click", ()=>{ const s=document.getElementById("song"); if(s.paused)s.play(); });
+
+setInterval(()=>{
+    let e=document.createElement("div");
+    e.className="float";
+    e.innerHTML = Math.random()>.5 ? "❤️" : "🦋";
+    e.style.left = (Math.random()*90)+"vw";
+    e.style.fontSize = (20+Math.random()*20)+"px";
+    document.body.appendChild(e);
+    setTimeout(()=>{e.remove();},6000);
+},500);
+
+function type(id){
+    let el=document.getElementById(id);
+    let txt=el.innerHTML;
+    el.innerHTML="";
+    el.style.opacity=1;
+    let i=0;
+    function t(){ 
+        if(i<txt.length){ 
+            el.innerHTML+=txt.charAt(i); 
+            i++; 
+            setTimeout(t,120);
+        } 
+    }
+    t();
+}
+function startTyping(){ 
+    setTimeout(()=>type("t1"),500); 
+    setTimeout(()=>type("t2"),1200); 
+}
+startTyping();
+</script>
+
+</body>
+</html><a href="message.html" class="btn">Message 💕</a>
 <a href="index.html" class="btn">Back Home 🏠</a>
 </div>
 
