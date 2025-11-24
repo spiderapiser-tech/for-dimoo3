@@ -15,12 +15,27 @@ body{margin:0;padding:0;overflow-x:hidden;overflow-y:auto;font-family:'Poppins',
 .float{position:fixed;bottom:-40px;animation:up 6s linear forwards;z-index:5;}
 @keyframes up{100%{transform:translateY(-100vh);opacity:0;}}
 
-/* grid الصور */
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(40vw,1fr));gap:4vw;margin-top:6vw;}
-.gallery div{position:relative;} /* حاوية relative لكل صورة */
-.gallery img{width:100%;display:block;border-radius:3vw;box-shadow:0 0 20px #ff0055;}
+/* gallery flex */
+.gallery{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4vw;
+  justify-content:center;
+  margin-top:6vw;
+}
+.gallery div{
+  position:relative;
+  width:40vw;
+  margin-bottom:4vw;
+}
+.gallery img{
+  width:100%;
+  display:block;
+  border-radius:3vw;
+  box-shadow:0 0 20px #ff0055;
+}
 
-/* الفيونك فوق الشمال داخل الصورة وحجم أكبر */
+/* الفيونك فوق الشمال داخل الصورة */
 .fyunk{
   position:absolute;
   top:8px;
@@ -70,6 +85,16 @@ setInterval(()=>{
     setTimeout(()=>{e.remove();},6000);
 },500);
 
+function type(id){
+    let el=document.getElementById(id); let txt=el.innerHTML; el.innerHTML=""; el.style.opacity=1;
+    let i=0; function t(){ if(i<txt.length){el.innerHTML+=txt.charAt(i); i++; setTimeout(t,120);} } t();
+}
+function startTyping(){ setTimeout(()=>type("t1"),500); setTimeout(()=>type("t2"),1200); }
+startTyping();
+</script>
+
+</body>
+</html>
 function type(id){
     let el=document.getElementById(id); let txt=el.innerHTML; el.innerHTML=""; el.style.opacity=1;
     let i=0; function t(){ if(i<txt.length){el.innerHTML+=txt.charAt(i); i++; setTimeout(t,120);} } t();
