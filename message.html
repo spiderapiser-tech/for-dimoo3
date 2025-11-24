@@ -3,123 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Message 💌</title>
+<title>Message 💕</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-body{margin:0;padding:6vw;background:#0c0c15;font-family:'Poppins',sans-serif;text-align:center;color:white;overflow:hidden;}
-body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at bottom,#ff004c33,#000);filter:blur(40px);z-index:-1;}
-h1{margin-top:10vw;font-size:8vw;text-shadow:0 0 20px #ff2d64;}
-.msg{margin-top:5vw;padding:6vw;font-size:5vw;background:#ffffff10;border-radius:4vw;line-height:1.8;box-shadow:0 0 25px #ff004caa;backdrop-filter:blur(4px);}
-.heart,.bfly,.star{position:fixed;bottom:-40px;}
-.heart{animation:floatUp 6s linear forwards;font-size:25px;color:#ff2d64;}
-.bfly{animation:flyUp 7s linear forwards;font-size:30px;}
-.star{position:fixed;top:-10px;font-size:8px;animation:starDown 6s linear forwards;opacity:.7;}
-@keyframes floatUp{100%{transform:translateY(-100vh);opacity:0;}}
-@keyframes flyUp{100%{transform:translateY(-100vh) rotate(35deg);opacity:0;}}
-@keyframes starDown{100%{transform:translateY(100vh);opacity:0;}}
-a.btn{display:inline-block;margin-top:10vw;padding:3vw 6vw;font-size:5vw;color:white;background:#ff004c;border-radius:5vw;text-decoration:none;box-shadow:0 0 15px #ff004c;transition:.3s;}
-a.btn:hover{transform:scale(1.1);}
-.popup{position:fixed;top:10%;left:50%;transform:translateX(-50%);background:white;color:#ff004c;font-size:5vw;padding:3vw 5vw;border-radius:3vw;box-shadow:0 0 15px #ff004c;display:none;z-index:10;}
+body{margin:0;padding:0;overflow-x:hidden;overflow-y:auto;font-family:'Poppins',sans-serif;color:#ff0055;position:relative;}
+#bgVideo4{position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-10;opacity:0.6;}
+#mainContent{padding:10vw 5vw;text-align:center;}
+.typed{font-size:6.5vw;font-weight:700;color:#ff0055;text-shadow:0 0 10px #ff7ba5;opacity:0;}
+.btn{display:block;margin:6vw auto;padding:3.5vw 6vw;font-size:5vw;width:60vw;background:#ff0055;color:white;text-decoration:none;border-radius:6vw;box-shadow:0 0 18px #ff0055;transition:0.3s;}
+.btn:hover{transform:scale(1.08);}
+.float{position:fixed;bottom:-40px;animation:up 6s linear forwards;z-index:5;}
+@keyframes up{100%{transform:translateY(-100vh);opacity:0;}}
 </style>
 </head>
 <body>
 
-<audio id="song" loop playsinline>
+<video autoplay muted loop playsinline id="bgVideo4">
+  <source src="background4.mp4" type="video/mp4">
+</video>
+
+<div id="mainContent">
+<audio id="song" loop>
   <source src="click.mp3" type="audio/mpeg">
 </audio>
 
-<h1>Message 4 U 💖</h1>
+<h1 class="typed" id="t1">Sweet Message 💌</h1>
+<p class="typed" id="t2">I love you more every day because you are the only who saw me in all my modes and didn't You abandoned me any time,i love you 💖</p>
 
-<div class="msg">
-habibty… enti a7la 7aga 3adit 3alaya fe 7ayaty.<br>
-kol lama bashofek ba7es en el donya betnor.<br>
-w kol second ma3aki betb2a a7la men eli ablaha.<br>
-ana ba7ebek benafs el 2alb eli ma2darsh a3rafo le 7ad. ❤️
+<a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
+<a href="gallery.html" class="btn">Our Pics 🎀</a>
+<a href="index.html" class="btn">Back Home 🏠</a>
 </div>
 
-<a href="index.html" class="btn">Home 🏠</a>
-<a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
-<a href="gallery.html" class="btn">Gallery 📸</a>
-
-<div class="popup"></div>
-
 <script>
-const messages = [
-  "Dimoooo 💖",
-  "Ba7eb el yom eli 3reftik feh 💌",
-  "Ba7eb el waqt eli ba2di ma3aki 🕊",
-  "Ba7ebek kteer 😍",
-  "Enti kol 7aga fe 7ayaty ✨"
-];
+document.addEventListener("click", ()=>{ const s=document.getElementById("song"); if(s.paused)s.play(); });
 
 setInterval(()=>{
-  let h=document.createElement("div"); h.className="heart"; h.innerHTML="❤️";
-  h.style.left=Math.random()*innerWidth+"px"; h.style.fontSize=(20+Math.random()*15)+"px";
-  document.body.appendChild(h); setTimeout(()=>h.remove(),6000);
-},350);
+    let e=document.createElement("div");
+    e.className="float";
+    e.innerHTML = Math.random()>.5 ? "❤️" : "🦋";
+    e.style.left = (Math.random()*90)+"vw";
+    e.style.fontSize = (20+Math.random()*20)+"px";
+    document.body.appendChild(e);
+    setTimeout(()=>{e.remove();},6000);
+},500);
 
-setInterval(()=>{
-  let b=document.createElement("div"); b.className="bfly"; b.innerHTML="🦋";
-  b.style.left=Math.random()*innerWidth+"px";
-  document.body.appendChild(b); setTimeout(()=>b.remove(),7000);
-},1200);
-
-setInterval(()=>{
-  let s=document.createElement("div"); s.className="star"; s.innerHTML="✦";
-  s.style.left=Math.random()*innerWidth+"px";
-  s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];
-  document.body.appendChild(s); setTimeout(()=>s.remove(),6000);
-},150);
-
-const popup = document.querySelector(".popup");
-function showPopup(){
-  const msg = messages[Math.floor(Math.random()*messages.length)];
-  popup.textContent = msg;
-  popup.style.display = "block";
-  setTimeout(()=>{popup.style.display="none";},2500);
+function type(id){
+    let el=document.getElementById(id); let txt=el.innerHTML; el.innerHTML=""; el.style.opacity=1;
+    let i=0; function t(){ if(i<txt.length){el.innerHTML+=txt.charAt(i); i++; setTimeout(t,120);} } t();
 }
-setInterval(showPopup,4000);
-
-// تشغيل الأغنية بعد أول click
-document.addEventListener("click", ()=>{
-  let s=document.getElementById("song");
-  if(s.paused) s.play();
-});
+function startTyping(){ setTimeout(()=>type("t1"),500); setTimeout(()=>type("t2"),1200); }
+startTyping();
 </script>
 
-</body>
-</html>main.style.display='block';
-    calculateDays();
-    animateMessages();
-  }else{
-    document.getElementById('errorMsg').innerText='كلمة المرور خاطئة!';
-  }
-}
-
-function calculateDays(){
-  const startDate=new Date('2024-06-04');
-  const today=new Date();
-  const diffTime=Math.abs(today-startDate);
-  const diffDays=Math.floor(diffTime/(1000*60*60*24));
-  document.getElementById('daysCount').innerText=diffDays;
-}
-
-const msgs=['dimooooo','بحب اليوم اللي عرفتك فيه','بحب الوقت اللي بقضيه معاكي','بحبكك'];
-function animateMessages(){
-  let index=0;
-  const msgDiv=document.getElementById('messages');
-  setInterval(()=>{msgDiv.innerText=msgs[index];index=(index+1)%msgs.length;},3000);
-}
-
-function createHeart(){
-  const heart=document.createElement('div');
-  heart.classList.add('heart');
-  heart.style.left=Math.random()*window.innerWidth+'px';
-  heart.style.animationDuration=4+Math.random()*3+'s';
-  document.body.appendChild(heart);
-  setTimeout(()=>{heart.remove();},7000);
-}
-setInterval(createHeart,500);
-</script>
 </body>
 </html>
