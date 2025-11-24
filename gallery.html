@@ -3,39 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> 5oshy hena 💞</title>
+<title>Gallery 💞</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-body{margin:0;padding:5vw;background:#fff0f5;font-family:'Poppins',sans-serif;text-align:center;color:#ff004c;overflow:hidden;}
-body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at top,#ffe6f2,#fff);filter:blur(40px);z-index:-1;}
-h1{font-size:8vw;text-shadow:0 0 15px #ff2d64;margin-top:10vw;}
+body{margin:0;padding:5vw;background:#fff0f5;font-family:'Poppins',sans-serif;text-align:center;color:#ff004c;overflow:hidden;position:relative;}
+.spiderweb{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:120vw;height:120vw;background:url('images/spiderweb.png') no-repeat center center;background-size:contain;opacity:0.15;z-index:-3;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at top,#ffe6f2,#fff);filter:blur(40px);z-index:-2;}
+h1{font-size:9vw;margin-top:10vw;text-shadow:0 0 15px #ff2d64;}
 .gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:4vw;margin-top:5vw;}
+.gallery-item{position:relative;}
 .gallery img{width:40vw;border-radius:4vw;box-shadow:0 0 25px #ff2d64aa;transition:.3s;}
 .gallery img:hover{transform:scale(1.05);}
+.ribbon{position:absolute;top:10%;left:10%;font-size:7vw;pointer-events:none;}
 .heart,.bfly,.star{position:fixed;bottom:-40px;}
-.heart{animation:floatUp 6s linear forwards;font-size:25px;color:#ff004c;}
-.bfly{animation:flyUp 7s linear forwards;font-size:30px;}
-.star{position:fixed;top:-10px;font-size:8px;animation:starDown 6s linear forwards;opacity:.7;}
+.heart{animation:floatUp 6s linear forwards;font-size:30px;color:#ff004c;}
+.bfly{animation:flyUp 7s linear forwards;font-size:40px;}
+.star{position:fixed;top:-10px;font-size:12px;animation:starDown 6s linear forwards;opacity:.7;}
 @keyframes floatUp{100%{transform:translateY(-100vh);opacity:0;}}
 @keyframes flyUp{100%{transform:translateY(-100vh) rotate(35deg);opacity:0;}}
 @keyframes starDown{100%{transform:translateY(100vh);opacity:0;}}
-a.btn{display:inline-block;margin-top:5vw;padding:3vw 6vw;font-size:5vw;color:white;background:#ff004c;border-radius:5vw;text-decoration:none;box-shadow:0 0 15px #ff004c;transition:.3s;}
-a.btn:hover{transform:scale(1.1);}
+.typed-text{font-size:6vw; opacity:0; display:inline-block;}
+.btn{margin-top:5vw;font-size:5.5vw;padding:3vw 6vw;background:#ff004c;display:inline-block;color:white;border-radius:5vw;text-decoration:none;box-shadow:0 0 15px #ff004c;transition:.3s;}
+.btn:hover{ transform:scale(1.1);}
 </style>
 </head>
 <body>
+
+<div class="spiderweb"></div>
 
 <audio id="song" loop playsinline>
   <source src="click.mp3" type="audio/mpeg">
 </audio>
 
-<h1> a3333 2mr yawlaah 💞</h1>
+<h1 class="typed-text" data-text="Gallery 💞"></h1>
 
 <div class="gallery">
-  <img src="love1.jpg" alt="🎀">
-  <img src="love2.jpg" alt="🎀">
-  <img src="love3.jpg" alt="🎀">
-  <img src="love4.jpg" alt="🎀">
+  <div class="gallery-item"><img src="love1.jpg" alt="Pic1"><div class="ribbon">🎀</div></div>
+  <div class="gallery-item"><img src="love2.jpg" alt="Pic2"><div class="ribbon">🎀</div></div>
+  <div class="gallery-item"><img src="love3.jpg" alt="Pic3"><div class="ribbon">🎀</div></div>
+  <div class="gallery-item"><img src="love4.jpg" alt="Pic4"><div class="ribbon">🎀</div></div>
 </div>
 
 <a href="index.html" class="btn">Home 🏠</a>
@@ -43,61 +49,13 @@ a.btn:hover{transform:scale(1.1);}
 <a href="message.html" class="btn">Message 💕</a>
 
 <script>
-setInterval(()=>{
-  let h=document.createElement("div"); h.className="heart"; h.innerHTML="❤️";
-  h.style.left=Math.random()*innerWidth+"px"; h.style.fontSize=(20+Math.random()*15)+"px";
-  document.body.appendChild(h); setTimeout(()=>h.remove(),6000);
-},350);
-
-setInterval(()=>{
-  let b=document.createElement("div"); b.className="bfly"; b.innerHTML="🦋";
-  b.style.left=Math.random()*innerWidth+"px";
-  document.body.appendChild(b); setTimeout(()=>b.remove(),7000);
-},1200);
-
-setInterval(()=>{
-  let s=document.createElement("div"); s.className="star"; s.innerHTML="✦";
-  s.style.left=Math.random()*innerWidth+"px";
-  s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];
-  document.body.appendChild(s); setTimeout(()=>s.remove(),6000);
-},150);
-
-document.addEventListener("click", ()=>{
-  let s=document.getElementById("song");
-  if(s.paused) s.play();
-});
+document.addEventListener("click", ()=>{let s=document.getElementById("song"); if(s.paused)s.play();});
+setInterval(()=>{let h=document.createElement("div");h.className="heart";h.innerHTML="❤️";h.style.left=Math.random()*innerWidth+"px";h.style.fontSize=(30+Math.random()*10)+"px";h.style.opacity=0.8;document.body.appendChild(h);setTimeout(()=>h.remove(),7000);},400);
+setInterval(()=>{let b=document.createElement("div");b.className="bfly";b.innerHTML="🦋";b.style.left=Math.random()*innerWidth+"px";b.style.fontSize=(35+Math.random()*15)+"px";b.style.opacity=0.9;document.body.appendChild(b);setTimeout(()=>b.remove(),7500);},1500);
+setInterval(()=>{let s=document.createElement("div");s.className="star";s.innerHTML="✦";s.style.left=Math.random()*innerWidth+"px";s.style.fontSize=(10+Math.random()*10)+"px";s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];s.style.opacity=0.7;document.body.appendChild(s);setTimeout(()=>s.remove(),7000);},200);
+function typeText(el){const text=el.getAttribute("data-text");let i=0;el.style.opacity=1;function type(){if(i<text.length){el.innerHTML+=text.charAt(i);i++;setTimeout(type,150);}}type();}
+window.addEventListener("load",()=>{document.querySelectorAll('.typed-text').forEach(el=>typeText(el));});
 </script>
 
-</body>
-</html>
-document.addEventListener("click", ()=>{
-  let s=document.getElementById("song");
-  if(s.paused) s.play();
-});
-</script>
-
-</body>
-</html>------ Stars ------------------
-setInterval(()=>{
-  let s=document.createElement("div"); s.className="star"; s.innerHTML="âœ¦";
-  s.style.left=Math.random()*innerWidth+"px";
-  s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];
-  document.body.appendChild(s); setTimeout(()=>s.remove(),6000);
-},150);
-
-// ------------------ Popup Ø¹Ù†Ø¯ Ø§Ù„Ø¯Ø®ÙˆÙ„ ------------------
-window.onload = ()=>{
-  let pop = document.querySelector(".popup");
-  pop.style.display="block";
-  setTimeout(()=>{pop.style.display="none";},3000);
-};
-</script>
-
-</body>
-</html>…Ø±ÙˆØ± Ø®Ø§Ø·Ø¦Ø©!';}}
-function animateTransition(e){playClick();e.preventDefault();const link=e.currentTarget.href;document.body.style.opacity=0;setTimeout(()=>{ window.location=link; },500);}
-function createHeart(){const heart=document.createElement('div');heart.classList.add('heart');heart.style.left=Math.random()*window.innerWidth+'px';heart.style.animationDuration=4+Math.random()*3+'s';document.body.appendChild(heart);setTimeout(()=>{heart.remove();},7000);}
-setInterval(createHeart,500);
-</script>
 </body>
 </html>
