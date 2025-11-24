@@ -1,120 +1,50 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>صورنا ❤️</title>
-
+<title>Our Gallery 💞</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-body{
-  margin:0; padding:0;
-  background:linear-gradient(135deg,#ffe3ec,#ffd0dc);
-  font-family:"Cairo",sans-serif;
-  text-align:center;
-  overflow-x:hidden;
-}
-
-/* شبكة العنكبوت */
-body::before{
-  content:""; position:absolute; inset:0;
-  background-image: radial-gradient(red 1px, transparent 1px);
-  background-size:22px 22px;
-  opacity:.08; z-index:0;
-}
-
-h1{ 
-  margin:5vw 0;
-  font-size:7vw;
-  color:#d6004c;
-  position:relative; z-index:2;
-}
-
-.gallery{
-  display:flex;
-  flex-direction:column;
-  gap:5vw;
-  padding-bottom:20vw;
-  position:relative; z-index:2;
-}
-
-img{
-  width:85%; border-radius:4vw;
-  box-shadow:0 4px 12px rgba(0,0,0,0.25);
-}
-
-/* قلوب */
-.heart{position:fixed; bottom:-40px; animation:heartUp 5s linear forwards;}
-
-/* فراشات */
-.butterfly{position:fixed; bottom:-40px; animation:flyUp 6s linear forwards;}
-
-@keyframes heartUp{
-  0%{transform:translateY(0);}
-  100%{transform:translateY(-100vh); opacity:0;}
-}
-@keyframes flyUp{
-  0%{transform:translateY(0);}
-  100%{transform:translateY(-100vh); opacity:0;}
-}
+body{margin:0;padding:5vw;background:#0c0c15;font-family:'Poppins',sans-serif;text-align:center;color:white;overflow:hidden;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at top,#ff004c33,#000);filter:blur(40px);z-index:-1;}
+h1{font-size:8vw;text-shadow:0 0 15px #ff2d64;}
+.gallery img{width:90%;border-radius:4vw;margin:4vw 0;box-shadow:0 0 25px #ff2d64aa;transition:.3s;}
+.gallery img:hover{transform:scale(1.05);}
+.heart,.bfly,.star{position:fixed;bottom:-40px;}
+.heart{animation:floatUp 6s linear forwards;font-size:25px;color:#ff2d64;}
+.bfly{animation:flyUp 7s linear forwards;font-size:30px;}
+.star{position:fixed;top:-10px;font-size:8px;animation:starDown 6s linear forwards;opacity:.7;}
+@keyframes floatUp{0%{transform:translateY(0);}100%{transform:translateY(-100vh);opacity:0;}}
+@keyframes flyUp{0%{transform:translateY(0);}100%{transform:translateY(-100vh) rotate(45deg);opacity:0;}}
+@keyframes starDown{0%{transform:translateY(0);}100%{transform:translateY(100vh);opacity:0;}}
+a.btn{display:inline-block;margin-top:5vw;padding:3vw 6vw;font-size:5vw;color:white;background:#ff004c;border-radius:5vw;text-decoration:none;box-shadow:0 0 15px #ff004c;transition:.3s;}
+a.btn:hover{transform:scale(1.1);}
 </style>
 </head>
-
 <body>
 
-<h1>📸 صورنا الحلوة</h1>
+<h1>Our Cute Moments 💞</h1>
 
 <div class="gallery">
-  <!-- حط صورك هنا -->
-  <img src="1.jpg">
-  <img src="2.jpg">
-  <img src="3.jpg">
+<img src="https://cdn.pixabay.com/photo/2017/08/06/18/14/couple-2599264_1280.jpg">
+<img src="https://cdn.pixabay.com/photo/2014/12/16/22/25/couple-569238_1280.jpg">
+<img src="https://cdn.pixabay.com/photo/2017/01/30/21/29/couple-2029363_1280.jpg">
+<img src="https://cdn.pixabay.com/photo/2016/07/24/18/38/couple-1536182_1280.jpg">
 </div>
 
-<script>
-// قلوب
-setInterval(()=>{
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*innerWidth+"px";
-  h.style.fontSize=(20+Math.random()*20)+"px";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),5000);
-},400);
+<a href="index.html" class="btn">Home 🏠</a>
+<a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
+<a href="message.html" class="btn">Message 💕</a>
 
-// فراشات
-setInterval(()=>{
-  let b=document.createElement("div");
-  b.className="butterfly";
-  b.innerHTML="🦋";
-  b.style.left=Math.random()*innerWidth+"px";
-  b.style.fontSize=(20+Math.random()*30)+"px";
-  document.body.appendChild(b);
-  setTimeout(()=>b.remove(),6000);
-},1200);
+<script>
+setInterval(()=>{let h=document.createElement("div");h.className="heart";h.innerHTML="❤️";h.style.left=Math.random()*innerWidth+"px";document.body.appendChild(h);setTimeout(()=>h.remove(),6000);},350);
+setInterval(()=>{let b=document.createElement("div");b.className="bfly";b.innerHTML="🦋";b.style.left=Math.random()*innerWidth+"px";document.body.appendChild(b);setTimeout(()=>b.remove(),7000);},1200);
+setInterval(()=>{let s=document.createElement("div");s.className="star";s.innerHTML="✦";s.style.left=Math.random()*innerWidth+"px";s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];document.body.appendChild(s);setTimeout(()=>s.remove(),6000);},150);
 </script>
 
 </body>
-</html> }
-.heart::after { left: 10px; top: 0; }
-@keyframes floatUp { 0% { transform: translateX(0) rotate(45deg); opacity:0.7; } 50% { opacity:1; } 100% { transform: translateY(-100vh) rotate(45deg) translateX(30px); opacity:0; } }
-</style>
-</head>
-<body>
-<audio id="clickSound" src="click.mp3"></audio>
-
-<div id="loginDiv">
-  <h1>🔒 أدخل كلمة المرور</h1>
-  <input type="password" id="password" placeholder="ادخلي الباسوورد">
-  <button onclick="checkPassword()">دخول</button>
-  <p id="errorMsg" style="color:red;font-size:4vw;"></p>
-</div>
-
-<div id="mainContent" style="display:none;opacity:0;">
-  <h1>📸 صورنا الحلوة</h1>
-  <div class="img-box"><img src="images/your-image-1.jpg"></div>
-  <div class="img-box"><img src="images/your-image-2.jpg"></div>
-  <div class="img-box"><img src="images/your-image-3.jpg"></div>
+</html><div class="img-box"><img src="images/your-image-3.jpg"></div>
   <a href="index.html">⬅️ رجوع للرئيسية</a><br><br>
   <button onclick="toggleDarkMode()">🌙 تبديل الوضع الليلي</button>
 </div>

@@ -1,118 +1,49 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>رسالتي ليكي 💌</title>
-
+<title>Message 💌</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-body{
-  margin:0; padding:0;
-  font-family:"Cairo",sans-serif;
-  background:linear-gradient(135deg,#ffd0dc,#ffe3ec);
-  text-align:center;
-  overflow-x:hidden;
-}
-
-/* شبكة العنكبوت */
-body::before{
-  content:""; position:absolute; inset:0;
-  background-image: radial-gradient(red 1px, transparent 1px);
-  background-size:22px 22px;
-  opacity:.08; z-index:0;
-}
-
-.container{
-  padding:8vw;
-  position:relative; z-index:2;
-}
-
-h1{
-  font-size:7vw;
-  color:#d6004c;
-}
-
-.msg{
-  background:white;
-  margin-top:6vw;
-  font-size:5vw;
-  padding:6vw;
-  line-height:1.9;
-  color:#d6004c;
-  border-radius:4vw;
-  box-shadow:0 4px 15px rgba(0,0,0,0.25);
-}
-
-/* قلوب + فراشات */
-.heart,.butterfly{
-  position:fixed; bottom:-40px;
-  opacity:.9;
-}
-.heart{animation:heartUp 5s linear forwards;}
-.butterfly{animation:flyUp 6s linear forwards;}
-
-@keyframes heartUp{
-  0%{transform:translateY(0);}
-  100%{transform:translateY(-100vh); opacity:0;}
-}
-@keyframes flyUp{
-  0%{transform:translateY(0);}
-  100%{transform:translateY(-100vh); opacity:0;}
-}
+body{margin:0;padding:6vw;background:#0c0c15;font-family:'Poppins',sans-serif;text-align:center;color:white;overflow:hidden;}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at bottom,#ff004c33,#000);filter:blur(40px);z-index:-1;}
+h1{margin-top:10vw;font-size:8vw;text-shadow:0 0 20px #ff2d64;}
+.msg{margin-top:5vw;padding:6vw;font-size:5vw;background:#ffffff10;border-radius:4vw;line-height:1.8;box-shadow:0 0 25px #ff2d64aa;backdrop-filter:blur(4px);}
+.heart,.bfly,.star{position:fixed;bottom:-40px;}
+.heart{animation:floatUp 6s linear forwards;font-size:25px;color:#ff2d64;}
+.bfly{animation:flyUp 7s linear forwards;font-size:30px;}
+.star{position:fixed;top:-10px;font-size:8px;animation:starDown 6s linear forwards;opacity:.7;}
+@keyframes floatUp{100%{transform:translateY(-100vh);opacity:0;}}
+@keyframes flyUp{100%{transform:translateY(-100vh) rotate(35deg);opacity:0;}}
+@keyframes starDown{100%{transform:translateY(100vh);opacity:0;}}
+a.btn{display:inline-block;margin-top:10vw;padding:3vw 6vw;font-size:5vw;color:white;background:#ff004c;border-radius:5vw;text-decoration:none;box-shadow:0 0 15px #ff004c;transition:.3s;}
+a.btn:hover{transform:scale(1.1);}
 </style>
 </head>
-
 <body>
 
-<div class="container">
-
-<h1>💌 رسالة ليكي</h1>
+<h1>Message 4 U 💖</h1>
 
 <div class="msg">
-حبيبتي…  
-أنا صنعت الموقع دا مخصوص ليكي…  
-علشان أقولك قد إيه انتي أغلى حد في حياتي…  
-وقد إيه وجودك بيغير يومي كله ❤️  
-وان كل لحظة معاكي بتسوى الدنيا كلها.  
-بحبك بشكل مش ممكن يوصفه كلام.  
+habibty… enti a7la 7aga 3adit 3alaya fe 7ayaty.<br>
+kol lama bashofek ba7es en el donya betnor.<br>
+w kol second ma3aki betb2a a7la men eli ablaha.<br>
+ana ba7ebek benafs el 2alb eli ma2darsh a3rafo le 7ad. ❤️
 </div>
 
-</div>
+<a href="index.html" class="btn">Home 🏠</a>
+<a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
+<a href="gallery.html" class="btn">Gallery 📸</a>
 
 <script>
-// قلوب
-setInterval(()=>{
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*innerWidth+"px";
-  h.style.fontSize=(20+Math.random()*20)+"px";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),5000);
-},350);
-
-// فراشات
-setInterval(()=>{
-  let b=document.createElement("div");
-  b.className="butterfly";
-  b.innerHTML="🦋";
-  b.style.left=Math.random()*innerWidth+"px";
-  b.style.fontSize=(20+Math.random()*30)+"px";
-  document.body.appendChild(b);
-  setTimeout(()=>b.remove(),6000);
-},1200);
+setInterval(()=>{let h=document.createElement("div");h.className="heart";h.innerHTML="❤️";h.style.left=Math.random()*innerWidth+"px";document.body.appendChild(h);setTimeout(()=>h.remove(),6000);},350);
+setInterval(()=>{let b=document.createElement("div");b.className="bfly";b.innerHTML="🦋";b.style.left=Math.random()*innerWidth+"px";document.body.appendChild(b);setTimeout(()=>b.remove(),7000);},1200);
+setInterval(()=>{let s=document.createElement("div");s.className="star";s.innerHTML="✦";s.style.left=Math.random()*innerWidth+"px";s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];document.body.appendChild(s);setTimeout(()=>s.remove(),6000);},150);
 </script>
 
 </body>
-</html> rotate(45deg); opacity:0.7; } 50% { opacity:1; } 100% { transform: translateY(-100vh) rotate(45deg) translateX(30px); opacity:0; } }
-</style>
-</head>
-<body>
-<audio id="clickSound" src="click.mp3"></audio>
-
-<div id="loginDiv">
-  <h1>🔒 أدخل كلمة المرور</h1>
-  <input type="password" id="password" placeholder="ادخلي الباسوورد">
+</html>�وورد">
   <button onclick="checkPassword()">دخول</button>
   <p id="errorMsg" style="color:red;font-size:4vw;"></p>
 </div>
