@@ -17,11 +17,18 @@ body{margin:0;padding:0;overflow-x:hidden;overflow-y:auto;font-family:'Poppins',
 
 /* grid الصور */
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(40vw,1fr));gap:4vw;margin-top:6vw;}
-.gallery div{position:relative; display:inline-block;}
-.gallery img{width:100%;border-radius:3vw; display:block; box-shadow:0 0 20px #ff0055;}
+.gallery div{position:relative;} /* حاوية relative لكل صورة */
+.gallery img{width:100%;display:block;border-radius:3vw;box-shadow:0 0 20px #ff0055;}
 
 /* الفيونك فوق الشمال داخل الصورة وحجم أكبر */
-.fyunk{position:absolute;top:8px;left:8px;font-size:8vw;pointer-events:none; z-index:10;}
+.fyunk{
+  position:absolute;
+  top:8px;
+  left:8px;
+  font-size:8vw;
+  pointer-events:none;
+  z-index:10;
+}
 </style>
 </head>
 <body>
