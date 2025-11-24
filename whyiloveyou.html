@@ -6,69 +6,58 @@
 <title>Why I Love You 💌</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-body{
-  margin:0; padding:5vw;
-  background:#fff0f5; /* خلفية بيضا رومانسية */
-  font-family:'Poppins',sans-serif;
-  text-align:center; color:#ff004c; overflow:hidden;
-}
-body::before{
-  content:""; position:fixed; inset:0;
-  background:radial-gradient(circle at center,#ffe6f2,#fff);
-  filter:blur(40px); z-index:-1;
-}
-h1{font-size:8vw;margin-top:10vw;text-shadow:0 0 20px #ff2d64;}
-p{margin-top:5vw;font-size:5vw;line-height:1.8;}
-.heart,.bfly,.star{position:fixed;bottom:-40px;}
-.heart{animation:floatUp 6s linear forwards;font-size:25px;color:#ff004c;}
-.bfly{animation:flyUp 7s linear forwards;font-size:30px;}
-.star{position:fixed;top:-10px;font-size:8px;animation:starDown 6s linear forwards;opacity:.7;}
-@keyframes floatUp{100%{transform:translateY(-100vh);opacity:0;}}
-@keyframes flyUp{100%{transform:translateY(-100vh) rotate(35deg);opacity:0;}}
-@keyframes starDown{100%{transform:translateY(100vh);opacity:0;}}
-a.btn{display:inline-block;margin-top:8vw;padding:3vw 6vw;font-size:5vw;color:white;background:#ff004c;border-radius:5vw;text-decoration:none;box-shadow:0 0 15px #ff004c;transition:.3s;}
-a.btn:hover{transform:scale(1.1);}
+body{margin:0;padding:0;overflow-x:hidden;overflow-y:auto;font-family:'Poppins',sans-serif;color:#ff0055;position:relative;}
+#bgVideo2{position:fixed;top:0;left:0;width:100vw;height:100vh;object-fit:cover;z-index:-10;opacity:0.6;}
+#mainContent{padding:10vw 5vw;text-align:center;}
+.typed{font-size:7vw;font-weight:700;color:#ff0055;text-shadow:0 0 10px #ff7ba5;opacity:0;}
+.btn{display:block;margin:6vw auto;padding:3.5vw 6vw;font-size:5vw;width:60vw;background:#ff0055;color:white;text-decoration:none;border-radius:6vw;box-shadow:0 0 18px #ff0055;transition:0.3s;}
+.btn:hover{transform:scale(1.08);}
+.float{position:fixed;bottom:-40px;animation:up 6s linear forwards;z-index:5;}
+@keyframes up{100%{transform:translateY(-100vh);opacity:0;}}
 </style>
 </head>
 <body>
 
-<audio id="song" loop playsinline>
+<video autoplay muted loop playsinline id="bgVideo2">
+  <source src="background2.mp4" type="video/mp4">
+</video>
+
+<div id="mainContent">
+<audio id="song" loop>
   <source src="click.mp3" type="audio/mpeg">
 </audio>
 
-<h1>Why I Love You 💌</h1>
-<p>
-Enti a7la 7aga fe 7ayaty.<br>
-Kol lama bashofek ba7es en el donya betnor.<br>
-Kol second ma3aki a7la men eli ablaha.<br>
-Ana ba7ebek kteer 😍
-</p>
+<h1 class="typed" id="t1">Because You Make Me Smile and no one in all the world have my secrets except you so if we broke up i will kill you 🙂</h1>
+<p class="typed" id="t2">Every moment with you is magic 💖</p>
 
-<a href="index.html" class="btn">Home 🏠</a>
-<a href="gallery.html" class="btn">Gallery 📸</a>
+<a href="gallery.html" class="btn">Pics 🎀</a>
 <a href="message.html" class="btn">Message 💕</a>
+<a href="index.html" class="btn">Back Home 🏠</a>
+</div>
 
 <script>
-// ---------- Floating effects ----------
-setInterval(()=>{
-  let h=document.createElement("div"); h.className="heart"; h.innerHTML="❤️";
-  h.style.left=Math.random()*innerWidth+"px"; h.style.fontSize=(20+Math.random()*15)+"px";
-  document.body.appendChild(h); setTimeout(()=>h.remove(),6000);
-},350);
+document.addEventListener("click", ()=>{ const s=document.getElementById("song"); if(s.paused)s.play(); });
 
 setInterval(()=>{
-  let b=document.createElement("div"); b.className="bfly"; b.innerHTML="🦋";
-  b.style.left=Math.random()*innerWidth+"px";
-  document.body.appendChild(b); setTimeout(()=>b.remove(),7000);
-},1200);
+    let e=document.createElement("div");
+    e.className="float";
+    e.innerHTML = Math.random()>.5 ? "❤️" : "🦋";
+    e.style.left = (Math.random()*90)+"vw";
+    e.style.fontSize = (20+Math.random()*20)+"px";
+    document.body.appendChild(e);
+    setTimeout(()=>{e.remove();},6000);
+},500);
 
-setInterval(()=>{
-  let s=document.createElement("div"); s.className="star"; s.innerHTML="✦";
-  s.style.left=Math.random()*innerWidth+"px";
-  s.style.color=["#ff004c","#ff66a3","#d400ff"][Math.floor(Math.random()*3)];
-  document.body.appendChild(s); setTimeout(()=>s.remove(),6000);
-},150);
+function type(id){
+    let el=document.getElementById(id); let txt=el.innerHTML; el.innerHTML=""; el.style.opacity=1;
+    let i=0; function t(){ if(i<txt.length){el.innerHTML+=txt.charAt(i); i++; setTimeout(t,120);} } t();
+}
+function startTyping(){ setTimeout(()=>type("t1"),500); setTimeout(()=>type("t2"),1200); }
+startTyping();
+</script>
 
+</body>
+</html>
 // ---------- Song autoplay ----------
 document.addEventListener("click", ()=>{
   let s=document.getElementById("song");
