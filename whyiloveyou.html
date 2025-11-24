@@ -6,12 +6,21 @@
 <title>Why I Love You 💌</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-body{margin:0;padding:5vw;background:#0c0c15;font-family:'Poppins',sans-serif;text-align:center;color:white;overflow:hidden;}
-body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at center,#ff004c33,#000);filter:blur(40px);z-index:-1;}
+body{
+  margin:0; padding:5vw;
+  background:#fff0f5; /* خلفية بيضا رومانسية */
+  font-family:'Poppins',sans-serif;
+  text-align:center; color:#ff004c; overflow:hidden;
+}
+body::before{
+  content:""; position:fixed; inset:0;
+  background:radial-gradient(circle at center,#ffe6f2,#fff);
+  filter:blur(40px); z-index:-1;
+}
 h1{font-size:8vw;margin-top:10vw;text-shadow:0 0 20px #ff2d64;}
 p{margin-top:5vw;font-size:5vw;line-height:1.8;}
 .heart,.bfly,.star{position:fixed;bottom:-40px;}
-.heart{animation:floatUp 6s linear forwards;font-size:25px;color:#ff2d64;}
+.heart{animation:floatUp 6s linear forwards;font-size:25px;color:#ff004c;}
 .bfly{animation:flyUp 7s linear forwards;font-size:30px;}
 .star{position:fixed;top:-10px;font-size:8px;animation:starDown 6s linear forwards;opacity:.7;}
 @keyframes floatUp{100%{transform:translateY(-100vh);opacity:0;}}
@@ -29,11 +38,10 @@ a.btn:hover{transform:scale(1.1);}
 
 <h1>Why I Love You 💌</h1>
 <p>
-3shan dayman 3ayza mslhty💖.<br>
-we bb2a mrta7lk mngher sbb💖.<br>
-we agmal wahda 3rftha l7d dlwkty💖.<br>
-yomy mbykmlsh mngherk💖.<br>
-aktar wahda btkhaf 3lya we btshel hmy💖
+Enti a7la 7aga fe 7ayaty.<br>
+Kol lama bashofek ba7es en el donya betnor.<br>
+Kol second ma3aki a7la men eli ablaha.<br>
+Ana ba7ebek kteer 😍
 </p>
 
 <a href="index.html" class="btn">Home 🏠</a>
@@ -41,19 +49,19 @@ aktar wahda btkhaf 3lya we btshel hmy💖
 <a href="message.html" class="btn">Message 💕</a>
 
 <script>
-// ------------ Floating hearts ------------
+// ---------- Floating effects ----------
 setInterval(()=>{
   let h=document.createElement("div"); h.className="heart"; h.innerHTML="❤️";
   h.style.left=Math.random()*innerWidth+"px"; h.style.fontSize=(20+Math.random()*15)+"px";
   document.body.appendChild(h); setTimeout(()=>h.remove(),6000);
 },350);
-// ------------ Butterflies ------------
+
 setInterval(()=>{
   let b=document.createElement("div"); b.className="bfly"; b.innerHTML="🦋";
   b.style.left=Math.random()*innerWidth+"px";
   document.body.appendChild(b); setTimeout(()=>b.remove(),7000);
 },1200);
-// ------------ Stars ------------
+
 setInterval(()=>{
   let s=document.createElement("div"); s.className="star"; s.innerHTML="✦";
   s.style.left=Math.random()*innerWidth+"px";
@@ -61,7 +69,7 @@ setInterval(()=>{
   document.body.appendChild(s); setTimeout(()=>s.remove(),6000);
 },150);
 
-// ------------ Song autoplay on click ------------
+// ---------- Song autoplay ----------
 document.addEventListener("click", ()=>{
   let s=document.getElementById("song");
   if(s.paused) s.play();
@@ -69,4 +77,5 @@ document.addEventListener("click", ()=>{
 </script>
 
 </body>
+</html></body>
 </html>
