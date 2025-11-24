@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery with 🎀</title>
+<title>Gallery with dimoo🎀</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 body {
@@ -60,30 +60,27 @@ body {
 }
 @keyframes up{100%{transform:translateY(-100vh);opacity:0;}}
 
-/* gallery flex */
+/* gallery */
 .gallery{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:4vw;
-  margin-top:6vw;
+  text-align:center; /* لتوسيط الصور */
 }
-.gallery div{
+.gallery-item{
   position:relative;
-  width:40vw;
-  margin-bottom:4vw;
+  display:inline-block;
+  margin:10px;
 }
-.gallery img{
-  width:100%;
+.gallery-item img{
   display:block;
-  border-radius:3vw;
+  max-width:100%;
+  height:auto;
+  border-radius:12px;
   box-shadow:0 0 20px #ff0055;
 }
 /* الفيونك فوق الشمال داخل الصورة */
 .fyunk{
   position:absolute;
-  top:8px;
-  left:8px;
+  top:5px;
+  left:5px;
   font-size:8vw;
   pointer-events:none;
   z-index:10;
@@ -105,10 +102,10 @@ body {
 <p class="typed" id="t2">Every photo tells a story 💖</p>
 
 <div class="gallery">
-  <div><img src="love1.jpg" alt="🎀"><div class="fyunk">🎀</div></div>
-  <div><img src="love2.jpg" alt="🎀"><div class="fyunk">🎀</div></div>
-  <div><img src="love3.jpg" alt="🎀"><div class="fyunk">🎀</div></div>
-  <div><img src="love4.jpg" alt="🎀"><div class="fyunk">🎀</div></div>
+  <div class="gallery-item"><img src="love1.jpg"><div class="fyunk">🎀</div></div>
+  <div class="gallery-item"><img src="love2.jpg"><div class="fyunk">🎀</div></div>
+  <div class="gallery-item"><img src="love3.jpg"><div class="fyunk">🎀</div></div>
+  <div class="gallery-item"><img src="love4.jpg"><div class="fyunk">🎀</div></div>
 </div>
 
 <a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
@@ -148,42 +145,6 @@ function startTyping(){
     setTimeout(()=>type("t1"),500); 
     setTimeout(()=>type("t2"),1200); 
 }
-startTyping();
-</script>
-
-</body>
-</html><a href="message.html" class="btn">Message 💕</a>
-<a href="index.html" class="btn">Back Home 🏠</a>
-</div>
-
-<script>
-document.addEventListener("click", ()=>{ const s=document.getElementById("song"); if(s.paused)s.play(); });
-
-setInterval(()=>{
-    let e=document.createElement("div");
-    e.className="float";
-    e.innerHTML = Math.random()>.5 ? "❤️" : "🦋";
-    e.style.left = (Math.random()*90)+"vw";
-    e.style.fontSize = (20+Math.random()*20)+"px";
-    document.body.appendChild(e);
-    setTimeout(()=>{e.remove();},6000);
-},500);
-
-function type(id){
-    let el=document.getElementById(id); let txt=el.innerHTML; el.innerHTML=""; el.style.opacity=1;
-    let i=0; function t(){ if(i<txt.length){el.innerHTML+=txt.charAt(i); i++; setTimeout(t,120);} } t();
-}
-function startTyping(){ setTimeout(()=>type("t1"),500); setTimeout(()=>type("t2"),1200); }
-startTyping();
-</script>
-
-</body>
-</html>
-function type(id){
-    let el=document.getElementById(id); let txt=el.innerHTML; el.innerHTML=""; el.style.opacity=1;
-    let i=0; function t(){ if(i<txt.length){el.innerHTML+=txt.charAt(i); i++; setTimeout(t,120);} } t();
-}
-function startTyping(){ setTimeout(()=>type("t1"),500); setTimeout(()=>type("t2"),1200); }
 startTyping();
 </script>
 
