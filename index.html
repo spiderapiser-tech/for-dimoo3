@@ -202,6 +202,140 @@ function startTyping(){
 </script>
 
 </body>
+</html>    color:white;
+    box-shadow:0 0 20px #ff0055;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#passwordBox button:hover{ transform:scale(1.08); }
+
+/* المحتوى المخفي */
+#mainContent{
+    display:none;
+    padding:10vw 5vw;
+    margin-top:20vw;
+    text-align:center;
+}
+
+/* تأثير الكتابة */
+.typed{
+    font-size:7vw;
+    font-weight:700;
+    color:#ff0055;
+    text-shadow:0 0 10px #ff7ba5;
+    opacity:0;
+}
+
+/* زرار */
+.btn{
+    display:block;
+    margin:6vw auto;
+    padding:3.5vw 6vw;
+    font-size:5vw;
+    width:60vw;
+    background:#ff0055;
+    color:white;
+    text-decoration:none;
+    border-radius:6vw;
+    box-shadow:0 0 18px #ff0055;
+    transition:0.3s;
+}
+.btn:hover{ transform:scale(1.08); }
+
+/* قلوب و فراشات */
+.float{
+    position:fixed;
+    bottom:-40px;
+    animation:up 6s linear forwards;
+    z-index:5;
+}
+@keyframes up{
+    100% { transform:translateY(-100vh); opacity:0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- الفيديو الخلفية -->
+<video autoplay muted loop playsinline id="bgVideo1">
+    <source src="background1.mp4" type="video/mp4">
+</video>
+
+<!-- بوكس الباسوورد -->
+<div id="passwordBox">
+    <h2>💖 Enter Love Key 💖</h2>
+    <input type="password" id="pass" placeholder="Enter password…">
+    <button onclick="unlock()">Open ❤️</button>
+</div>
+
+<!-- المحتوى بعد الباسوورد -->
+<div id="mainContent">
+    <audio id="song" loop>
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
+
+    <h1 class="typed" id="t1">Surprise ❤️</h1>
+    <h2 class="typed" id="t2">B7bkk ya Dimoo 😍</h2>
+
+    <a href="whyiloveyou.html" class="btn">Why I Love You 💌</a>
+    <a href="gallery.html" class="btn">Pics 🎀</a>
+    <a href="message.html" class="btn">Message 💕</a>
+</div>
+
+<script>
+function unlock(){
+    if(document.getElementById("pass").value === "28/1"){
+        document.getElementById("passwordBox").style.display="none";
+        document.getElementById("mainContent").style.display="block";
+        startTyping();
+        document.getElementById("song").play().catch(()=>{});
+    } else {
+        alert("❌ Wrong Password");
+    }
+}
+
+document.addEventListener("click", ()=>{
+    const s=document.getElementById("song");
+    if(s.paused){ s.play(); }
+});
+
+/* قلوب و فراشات */
+setInterval(()=>{
+    let e=document.createElement("div");
+    e.className="float";
+    e.innerHTML = Math.random()>.5 ? "❤️" : "🦋";
+    e.style.left = (Math.random()*90)+"vw";
+    e.style.fontSize = (20 + Math.random()*20)+"px";
+    document.body.appendChild(e);
+    setTimeout(()=>{e.remove();},6000);
+},500);
+
+/* typing effect */
+function type(id){
+    let el=document.getElementById(id);
+    let txt=el.innerHTML;
+    el.innerHTML="";
+    el.style.opacity=1;
+    let i=0;
+    function t(){
+        if(i<txt.length){
+            el.innerHTML+=txt.charAt(i);
+            i++;
+            setTimeout(t,120);
+        }
+    }
+    t();
+}
+
+function startTyping(){
+    setTimeout(()=>type("t1"),500);
+    setTimeout(()=>type("t2"),1600);
+}
+</script>
+
+</body>
 </html>
     color:white;
     box-shadow:0 0 20px #ff0055;
